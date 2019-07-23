@@ -7,5 +7,5 @@ export class CartItem {
         return total;
     }
 
-    constructor(public menuItem: MenuItem, public quantity: number = 0) { }
+    constructor(public menuItem: MenuItem, public quantity: number = 1) { }
 }
