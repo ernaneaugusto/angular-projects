@@ -1,13 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PhotoService } from './photos/photo/photo.service';
+import { Photo } from './photos/photo/photo';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  photos = [
-    { description: 'Home de Ferro', url: 'https://www.comboinfinito.com.br/principal/wp-content/uploads/2018/05/homem-de-ferro-roubado.jpg' },
-    { description: 'Home de Ferro 2', url: 'https://cdn.cloudcoaching.com.br/wp-content/uploads/2019/01/o-que-podemos-aprender-com-o-homem-de-ferro-1200x628-1200x628.png' }
-  ];
+export class AppComponent implements OnInit {
+  photos: Photo[] = [];
+
+  constructor(private photoService: PhotoService) { }
+
+  ngOnInit(): void {
+    this.photoService
+      .listFromUser("flavio")
+      .subscribe(photos => {
+        this.photos = photos;
+      });
+  }
+
 }
