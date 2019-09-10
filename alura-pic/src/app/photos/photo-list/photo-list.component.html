@@ -1,1 +1,13 @@
-<app-photos [photos]="photos"></app-photos>
+<div class="text-center mt-3 mb-3">
+    <form class="form-inline md-form form-sm active-cyan-2 mt-2">
+        <input
+            class="form-control form-control-sm mr-3 w-50"
+            type="search"
+            placeholder="Buscar..."
+            (keyup)="filter = $event.target.value"
+            autofocus>
+    </form>
+</div>
+<app-photos 
+    [photos]="photos | filterByDescription: filter">
+</app-photos>

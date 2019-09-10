@@ -1,8 +1,14 @@
 <ol class="list-unstyled">
+    <p *ngIf="!photos.length"
+        class="text-center text-muted">Não há resultados para sua busca.</p>
+
     <li *ngFor="let cols of rows" class="row">
         <div *ngFor="let photo of cols" class="col-4">
-            <ap-photo [url]="photo.url" [description]="photo.description">
+            <ap-photo 
+                [url]="photo.url" 
+                [description]="photo.description">
             </ap-photo>
         </div>
     </li>
+
 </ol>
