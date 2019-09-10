@@ -6,6 +6,7 @@ import { PhotoFormComponent } from './photos/photo-form/photo-form.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const ROUTES: Routes = [
+    { path: '', component: PhotoFormComponent },
     { path: 'user/:userName', component: PhotoListComponent },
     { path: 'photo/add', component: PhotoFormComponent },
     { path: '**', component: NotFoundComponent }
