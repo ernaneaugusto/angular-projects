@@ -4,7 +4,7 @@
             class="form-control form-control-sm mr-3 w-50"
             type="search"
             placeholder="Buscar..."
-            (keyup)="filter = $event.target.value"
+            (keyup)="debounce.next($event.target.value)"
             autofocus>
     </form>
 </div>
