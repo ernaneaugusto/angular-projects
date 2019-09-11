@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
 import { Photo } from '../../photo/photo';
+import { CardComponent } from 'src/app/shared/components/card/card.component';
 
 @Component({
   selector: 'app-photos',
