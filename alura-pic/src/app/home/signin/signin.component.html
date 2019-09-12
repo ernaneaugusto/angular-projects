@@ -2,7 +2,7 @@
 
 <div class="row justify-content-center">
     <div class="col-6">
-        <form [formGroup]="loginForm" class="form mt-4">
+        <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
             <div class="form-group">
                 <input class="form-control" formControlName="userName" placeholder="Usuário" autofocus>
