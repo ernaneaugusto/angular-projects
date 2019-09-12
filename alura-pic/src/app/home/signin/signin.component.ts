@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthService } from 'src/app/core/auth.service';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { Router } from '@angular/router';
+
+import { PlatformDetectorService } from 'src/app/core/platform-detector/platform-detector.service';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +18,8 @@ export class SigninComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private platformDetectorService: PlatformDetectorService
   ) { }
 
   login() {
@@ -33,7 +36,8 @@ export class SigninComponent implements OnInit {
         },
         err => {
           this.loginForm.reset();
-          this.userNameInput.nativeElement.focus();
+          this.platformDetectorService.isPlatformBrowser() &&
+            this.userNameInput.nativeElement.focus();
           alert('Usuário ou senha inválidos! :(');
         }
       )
