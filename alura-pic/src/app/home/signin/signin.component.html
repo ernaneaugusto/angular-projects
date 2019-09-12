@@ -1,0 +1,31 @@
+<!-- <h4 class="text-center">Login</h4> -->
+
+<div class="row justify-content-center">
+    <div class="col-6">
+        <form [formGroup]="loginForm" class="form mt-4">
+
+            <div class="form-group">
+                <input class="form-control" formControlName="userName" placeholder="Usuário" autofocus>
+                <small 
+                    *ngIf="loginForm.get('userName').errors?.required"
+                    class="text-danger d-block mt-2">Usuário obrigatório!</small>
+            </div>
+
+            <div class="form-group">
+                <input type="password" formControlName="password" class="form-control" placeholder="Senha">
+                <small 
+                    *ngIf="loginForm.get('password').errors?.required"
+                    class="text-danger d-block mt-2">Senha obrigatória!</small>
+            </div>
+
+            <button 
+                [disabled]="loginForm.invalid"
+                type="submit"
+                class="btn btn-info ml-0">
+                Entrar
+            </button>
+
+        </form>
+        <p class="text-muted">Não é cadastrado? <a href="">Registre-se agora.</a></p>
+    </div>
+</div>
