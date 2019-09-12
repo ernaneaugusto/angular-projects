@@ -3,7 +3,7 @@
         class="text-center text-muted">Não há resultados para sua busca.</p>
 
     <li *ngFor="let cols of rows" class="row">
-        <div *ngFor="let photo of cols" class="col-4">
+        <div *ngFor="let photo of cols" class="col-4" appDarkenOnHover brightness="90%">
             <app-card>
                 <app-photo 
                     [url]="photo.url" 
