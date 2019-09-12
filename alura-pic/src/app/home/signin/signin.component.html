@@ -5,7 +5,8 @@
         <form [formGroup]="loginForm" class="form mt-4" (submit)="login()">
 
             <div class="form-group">
-                <input class="form-control" formControlName="userName" placeholder="Usuário" autofocus>
+                <input #userNameInput
+                     class="form-control" formControlName="userName" placeholder="Usuário" autofocus>
                 <app-vmessage 
                     *ngIf="loginForm.get('userName').errors?.required"
                     text="Usuário é obigatório!">Usuário obrigatório!</app-vmessage>

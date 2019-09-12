@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -10,10 +11,12 @@ import { AuthService } from 'src/app/core/auth.service';
 export class SigninComponent implements OnInit {
 
   loginForm: FormGroup;
+  @ViewChild('userNameInput', { static: false }) userNameInput: ElementRef<HTMLInputElement>;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   login() {
@@ -23,14 +26,16 @@ export class SigninComponent implements OnInit {
     this.authService
       .authenticate(userName, password)
       .subscribe(
-          () => {
-            alert('Login realizado com sucesso! :)')
-            console.log('Deu bom  /o/')
-          },
-          err => {
-            this.loginForm.reset();
-            alert('Usuário ou senha inválidos! :(')
-          }
+        () => {
+          alert('Login realizado com sucesso! :)')
+          this.router.navigate(['user', userName])
+          console.log('Deu bom  /o/')
+        },
+        err => {
+          this.loginForm.reset();
+          this.userNameInput.nativeElement.focus();
+          alert('Usuário ou senha inválidos! :(');
+        }
       )
   }
 
