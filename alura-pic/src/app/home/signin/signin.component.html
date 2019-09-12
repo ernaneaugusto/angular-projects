@@ -6,16 +6,16 @@
 
             <div class="form-group">
                 <input class="form-control" formControlName="userName" placeholder="Usuário" autofocus>
-                <small 
+                <app-vmessage 
                     *ngIf="loginForm.get('userName').errors?.required"
-                    class="text-danger d-block mt-2">Usuário obrigatório!</small>
+                    text="Usuário é obigatório!">Usuário obrigatório!</app-vmessage>
             </div>
 
             <div class="form-group">
                 <input type="password" formControlName="password" class="form-control" placeholder="Senha">
-                <small 
+                <app-vmessage 
                     *ngIf="loginForm.get('password').errors?.required"
-                    class="text-danger d-block mt-2">Senha obrigatória!</small>
+                    text="Senha é obigatória!">Senha obrigatória!</app-vmessage>
             </div>
 
             <button 
