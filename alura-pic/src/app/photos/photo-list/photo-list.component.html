@@ -1,14 +1,6 @@
-<div class="text-center mt-3 mb-3">
-    <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-        <input
-            class="form-control form-control-sm mr-3 w-50"
-            type="search"
-            placeholder="Buscar..."
-            (keyup)="debounce.next($event.target.value)"
-            autofocus>
-        <i aria-hidden="true" class="fa fa-search mr-1"></i>
-    </form>
-</div>
+<app-search
+    (onTyping)="filter = $event">
+</app-search>
 <app-photos 
     [photos]="photos | filterByDescription: filter">
 </app-photos>
