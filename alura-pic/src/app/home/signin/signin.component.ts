@@ -39,6 +39,7 @@ export class SigninComponent implements OnInit {
           this.platformDetectorService.isPlatformBrowser() &&
             this.userNameInput.nativeElement.focus();
           alert('Usuário ou senha inválidos! :(');
+          alert(userName+" + "+password);
         }
       )
   }
