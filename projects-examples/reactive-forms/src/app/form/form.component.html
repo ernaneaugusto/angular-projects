@@ -1,0 +1,26 @@
+<form [formGroup]="formDados" (ngSubmit)="onCompleteForm()" novalidate>
+
+    <label for="nome">
+        Nome:
+        <input type="text" name="nome" formControlName="nome">
+    </label>
+    <strong *ngIf="formDados.get('nome').valid && formDados.get('nome').touched">OK</strong>
+    <strong *ngIf="!formDados.get('nome').valid && formDados.get('nome').touched">Preencha o nome</strong>
+    <br>
+    <br>
+
+    <label for="idade">
+        Idade:
+        <input type="number" name="idade" formControlName="idade">
+    </label>
+    <strong *ngIf="formDados.get('idade').valid && formDados.get('idade').touched">OK</strong>
+    <strong *ngIf="!formDados.get('idade').valid && formDados.get('idade').touched">Preencha a idade</strong>
+    <br>
+    <br>
+
+    <button type="submit">Cadastrar</button>
+    <!-- <button type="submit" [disabled]="!formDados.valid">Cadastrar</button> -->
+    &nbsp;
+    <span [hidden]="!formDados.valid">/o/</span>
+
+</form>
