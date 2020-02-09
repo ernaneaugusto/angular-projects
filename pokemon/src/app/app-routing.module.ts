@@ -7,8 +7,8 @@ const routes: Routes = [
   { 
     path: '',
     loadChildren: () => 
-      import('./modules/lazy-loading/lazy-loading.module')
-      .then(module => module.LazyLoadingModule)
+      import('./shared/components/shared.module')
+      .then(module => module.SharedModule)
     }
 ];
 

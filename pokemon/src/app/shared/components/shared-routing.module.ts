@@ -18,4 +18,4 @@ const ROUTES: Routes = [
     ]
 })
 
-export class LazyLoadingRoutingModule { }
+export class SharedRoutingModule { }

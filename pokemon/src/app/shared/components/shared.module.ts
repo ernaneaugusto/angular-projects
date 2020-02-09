@@ -1,19 +1,21 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 
-import { LazyLoadingRoutingModule } from "./lazy-loading-routing.module";
+import { SharedRoutingModule } from "./shared-routing.module";
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { AboutComponent } from 'src/app/components/about/about.component';
+import { ContainerWithRowComponent } from 'src/app/shared/components/container-with-row/container-with-row.component';
 
 @NgModule({
     declarations: [
         HomeComponent,
-        AboutComponent
+        AboutComponent,
+        ContainerWithRowComponent
     ],
     imports: [
         CommonModule,
-        LazyLoadingRoutingModule
+        SharedRoutingModule
     ]
 })
 
-export class LazyLoadingModule { }
+export class SharedModule { }

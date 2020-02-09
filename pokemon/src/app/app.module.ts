@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LazyLoadingModule } from './modules/lazy-loading/lazy-loading.module';
+import { SharedModule } from './shared/components/shared.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 
@@ -16,7 +16,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LazyLoadingModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
