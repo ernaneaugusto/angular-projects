@@ -5,7 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 // Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ProductData } from './products/product-data';
-import { RouterModule, Routes } from '@angular/router';
+
+import { AppRoutibgModule }  from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './home/welcome.component';
@@ -16,11 +17,7 @@ import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
 
-const ROUTES: Routes = [
-  { path: 'home', redirectTo: 'welcome', pathMatch: 'full' }, // redirecionamento de rotas
-  { path: 'welcome', component: WelcomeComponent },
-  { path: '**', component: PageNotFoundComponent } // **: usado para definir componente a ser carregado caso rota acessada nao exista
-]
+
 
 @NgModule({
   imports: [
@@ -30,8 +27,7 @@ const ROUTES: Routes = [
     ProductModule,
     UserModule,
     MessageModule,
-    RouterModule,
-    RouterModule.forRoot(ROUTES)
+    AppRoutibgModule
   ],
   declarations: [
     AppComponent,
