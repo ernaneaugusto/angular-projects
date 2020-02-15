@@ -14,6 +14,13 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { ProductModule } from './products/product.module';
 import { UserModule } from './user/user.module';
 import { MessageModule } from './messages/message.module';
+import { RouterModule, Routes } from '@angular/router';
+
+const ROUTES: Routes = [
+  { path: '', redirectTo: 'welcome', pathMatch: 'full' }, // redirecionamento de rotas
+  { path: 'welcome', component: WelcomeComponent },
+  { path: '**', component: PageNotFoundComponent } // **: usado para definir componente a ser carregado caso rota acessada nao exista
+]
 
 @NgModule({
   imports: [
@@ -22,7 +29,9 @@ import { MessageModule } from './messages/message.module';
     InMemoryWebApiModule.forRoot(ProductData, { delay: 1000 }),
     ProductModule,
     UserModule,
-    MessageModule
+    MessageModule,
+    RouterModule,
+    RouterModule.forRoot(ROUTES)
   ],
   declarations: [
     AppComponent,
