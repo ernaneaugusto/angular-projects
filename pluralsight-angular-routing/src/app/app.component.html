@@ -5,7 +5,7 @@
       <a class="nav-link" [routerLink]="['/home']">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link">Product List</a>
+      <a class="nav-link" [routerLink]="['/products']">Product List</a>
     </li>
     <li class="nav-item">
       <a class="nav-link">Add Product</a>
@@ -21,11 +21,11 @@
     </li>
     <li class="nav-item"
         *ngIf="!isLoggedIn">
-      <a class="nav-link">Log In</a>
+      <a class="nav-link px-3 text-white btn btn-primary" [routerLink]="['login']">Log In</a>
     </li>
     <li class="nav-item"
         *ngIf="isLoggedIn">
-      <a class="nav-link"
+      <a class="nav-link px-3 text-white btn btn-danger"
          (click)="logOut()">Log Out</a>
     </li>
   </ul>
