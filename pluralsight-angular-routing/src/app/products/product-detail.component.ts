@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from './product';
-import { ProductService } from './product.service';
+import { Product, ProductResolved } from './product';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -14,20 +13,13 @@ export class ProductDetailComponent implements OnInit {
   errorMessage: string;
 
   constructor(
-    private productService: ProductService,
-    private route: ActivatedRoute
-    ) { }
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-    const id = parseInt(this.route.snapshot.paramMap.get('id'));
-    this.getProduct(id);
-  }
-
-  getProduct(id: number) {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.onProductRetrieved(product),
-      error: err => this.errorMessage = err
-    });
+    const resolvedData: ProductResolved = this.activatedRoute.snapshot.data['resolvedData'];
+    this.errorMessage = resolvedData.error;
+    this.onProductRetrieved(resolvedData.product);
   }
 
   onProductRetrieved(product: Product): void {
@@ -36,6 +28,7 @@ export class ProductDetailComponent implements OnInit {
     if (this.product) {
       this.pageTitle = `Product Detail: ${this.product.productName}`;
     } else {
+      // @TODO: esconder mensagem de 'No product found' quando houver erro no resolver da rota para id de produto nao encontrado
       this.pageTitle = 'No product found';
     }
   }

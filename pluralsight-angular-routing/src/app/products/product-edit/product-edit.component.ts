@@ -25,22 +25,23 @@ export class ProductEditComponent implements OnInit {
 
   ngOnInit() {
     // Com this.route.snapshot.paramMap sem o susbcribe o componente eh atualizado apenas 1 vez, com isso, caso algum parametro da rota seja mudado, como o ID do produto, o componente nao eh atualizado com as novas informacoes desse produto, para que essa atualizacao ocorra deve-se utilizar o subscribe
-    
+
+    // sem o subscribe
     // const id = parseInt(this.route.snapshot.paramMap.get('id'));
     // this.getProduct(id);
-    this.activatedRoute.paramMap.subscribe(
-      params => {
-        const id = parseInt(params.get('id'));
-        this.getProduct(id);
-      }
-    );
-  }
 
-  getProduct(id: number): void {
-    this.productService.getProduct(id).subscribe({
-      next: product => this.onProductRetrieved(product),
-      error: err => this.errorMessage = err
-    });
+    // com subscribe
+    // this.activatedRoute.paramMap.subscribe(
+    //   params => {
+    //     const id = parseInt(params.get('id'));
+    //     this.getProduct(id);
+    //   }
+    // );
+
+    // com resolver
+    const resolvedData = this.activatedRoute.snapshot.data['resolvedData'];
+    this.errorMessage = resolvedData.error;
+    this.onProductRetrieved(resolvedData.product);
   }
 
   onProductRetrieved(product: Product): void {
