@@ -48,7 +48,7 @@
             </td>
             <td>
               <!-- queryParams="{chave: valer}" serve para passar parametros* via query string -->
-              <!-- * Ver mais em product.list.component.html -->
+              <!-- * Ver mais em product-detail.component.html -->
               <a [routerLink]="['/products', product.id]" title="Ver {{ product.productName }}"
               [queryParams]="{ filterBy: listFilter, showImage: showImage }">
                 {{ product.productName }}
