@@ -47,7 +47,10 @@
                    [style.margin.px]="imageMargin">
             </td>
             <td>
-              <a [routerLink]="['/products', product.id]" title="Ver {{ product.productName }}">
+              <!-- queryParams="{chave: valer}" serve para passar parametros* via query string -->
+              <!-- * Ver mais em product.list.component.html -->
+              <a [routerLink]="['/products', product.id]" title="Ver {{ product.productName }}"
+              [queryParams]="{ filterBy: listFilter, showImage: showImage }">
                 {{ product.productName }}
               </a>
             </td>

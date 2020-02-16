@@ -60,7 +60,9 @@
       <div class="col-md-4">
         <a class="btn btn-outline-secondary mr-3"
                 style="width:80px"
-                [routerLink]="['/products']">
+                [routerLink]="['/products']"
+                 queryParamsHandling="preserve">
+                 <!-- queryParamsHandling="preserve" serve para carregar a rota /products preservando os parametros de query string que estao na url atualmente -->
           <i class="fa fa-chevron-left"></i> Back
         </a>
         <a class="btn btn-outline-primary"
