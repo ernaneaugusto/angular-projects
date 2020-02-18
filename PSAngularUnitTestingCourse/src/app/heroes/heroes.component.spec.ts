@@ -56,5 +56,13 @@ describe('HeroesComponent', () => {
             expect(component.heroes[0].hasOwnProperty('name')).toBe(true);
             expect(component.heroes[0].hasOwnProperty('strength')).toBe(true);
         });
+        
+        it('should getHeroes', () => {
+            mockHeroService.deleteHero.and.returnValue(of(true));
+            component.heroes = heroes;
+
+            component.delete(heroes[2]);
+            expect(mockHeroService.deleteHero).toHaveBeenCalledWith(heroes[2]);
+        });
     })
 })
