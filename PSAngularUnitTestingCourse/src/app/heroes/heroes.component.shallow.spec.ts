@@ -4,6 +4,7 @@ import { HeroesComponent } from "./heroes.component";
 import { HeroComponent } from "../hero/hero.component"
 import { HeroService } from "../hero.service";
 import { of } from "rxjs";
+import { By } from "@angular/platform-browser";
 
 describe('HeroesComponent (shallow test)', () => {
     let component: HeroesComponent;
@@ -33,5 +34,12 @@ describe('HeroesComponent (shallow test)', () => {
         heroServiceMock.getHeroes.and.returnValue(of(heroes));
         fixture.detectChanges();
         expect(fixture.componentInstance.heroes.length).toBe(3);
+    })
+    
+    it('should createone li for each hero', () => {
+        heroServiceMock.getHeroes.and.returnValue(of(heroes));
+        fixture.detectChanges();
+        // mesmo teste acima contando a partir de tags HTML
+        expect(fixture.debugElement.queryAll(By.css('li')).length).toBe(3)
     })
 })
