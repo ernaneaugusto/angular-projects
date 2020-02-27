@@ -1,11 +1,22 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing"
-import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { HeroesComponent } from "./heroes.component";
-import { HeroComponent } from "../hero/hero.component"
 import { HeroService } from "../hero.service";
 import { of } from "rxjs";
 import { By } from "@angular/platform-browser";
+import { Input, Component } from "@angular/core";
+import { Hero } from "../hero";
 
+// 
+@Component({
+    selector: 'app-hero',
+    template: '<div></div>'
+})
+
+class HeroComponentFake {
+    @Input() hero: Hero;
+}
+
+// Test
 describe('HeroesComponent (shallow test)', () => {
     let component: HeroesComponent;
     let fixture: ComponentFixture<HeroesComponent>;
@@ -20,11 +31,13 @@ describe('HeroesComponent (shallow test)', () => {
         ];
         heroServiceMock = jasmine.createSpyObj(['getHeroes', 'addHero', 'deleteHero']);
         TestBed.configureTestingModule({
-            declarations: [HeroesComponent],
+            declarations: [
+                HeroesComponent,
+                HeroComponentFake
+            ],
             providers: [
                 { provide: HeroService, useValue: heroServiceMock }
-            ],
-            schemas: [NO_ERRORS_SCHEMA]
+            ]
         })
 
         fixture = TestBed.createComponent(HeroesComponent);
@@ -35,7 +48,7 @@ describe('HeroesComponent (shallow test)', () => {
         fixture.detectChanges();
         expect(fixture.componentInstance.heroes.length).toBe(3);
     })
-    
+
     it('should createone li for each hero', () => {
         heroServiceMock.getHeroes.and.returnValue(of(heroes));
         fixture.detectChanges();
