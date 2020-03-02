@@ -18,4 +18,4 @@ const ROUTES: Routes = [
         RouterModule
     ]
 })
-export class AppRoutibgModule { }
+export class AppRoutingModule { }
