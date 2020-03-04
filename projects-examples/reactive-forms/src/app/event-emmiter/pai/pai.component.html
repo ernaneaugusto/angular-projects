@@ -1,0 +1,7 @@
+<h1>Exemplo de EventEmitter</h1>
+
+<!-- valor do EventEmitter sendo usado na view no componente PAI -->
+<p>Contador: {{ valueOfChild }}</p>
+
+<!-- valor do EventEmitter sendo usado como input do componente PAI para o componente FILHO -->
+<app-filho [counter]="valueOfChild" (newCounterEmit)="onNewCounterEmit($event)"></app-filho>

@@ -5,11 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
+import { FilhoComponent } from './event-emmiter/filho/filho.component';
+import { PaiComponent } from './event-emmiter/pai/pai.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
+    FormComponent,
+    FilhoComponent,
+    PaiComponent
   ],
   imports: [
     BrowserModule,
