@@ -39,9 +39,16 @@ export class ProductEditComponent implements OnInit {
     // );
 
     // com resolver
-    const resolvedData = this.activatedRoute.snapshot.data['resolvedData'];
-    this.errorMessage = resolvedData.error;
-    this.onProductRetrieved(resolvedData.product);
+    // const resolvedData = this.activatedRoute.snapshot.data['resolvedData'];
+    // this.errorMessage = resolvedData.error;
+    // this.onProductRetrieved(resolvedData.product);
+
+    // com resolver e subscribe garantimos que tanto a pagina de edicao quanto a de adicao de produtos funcionem corretamente, como elas usam o msm componente e a unica coisa que muda na rota eh o ID do produto o ngOnInit nao eh executado novamente, por isso precisamos do subscribe
+    this.activatedRoute.data.subscribe(dados => {
+      const resolvedData = dados['resolvedData'];
+      this.errorMessage = resolvedData.error;
+      this.onProductRetrieved(resolvedData.product);
+    })
   }
 
   onProductRetrieved(product: Product): void {
