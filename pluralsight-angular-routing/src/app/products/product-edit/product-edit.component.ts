@@ -15,6 +15,7 @@ export class ProductEditComponent implements OnInit {
   errorMessage: string;
 
   product: Product;
+  private dataIsValid: { [key: string]: boolean } = {};
 
   constructor(
     private productService: ProductService,
@@ -104,5 +105,30 @@ export class ProductEditComponent implements OnInit {
 
     // Navigate back to the product list
     this.route.navigateByUrl('/products');
+  }
+
+  isValid(path?: string): boolean {
+    this.validate();
+    if(path) return this.dataIsValid[path];
+
+    return (this.dataIsValid && Object.keys(this.dataIsValid).every(d => this.dataIsValid[d] === true));
+  }
+  
+  validate(): void {
+    this.dataIsValid = {};
+
+    // Tab: info
+    if(this.product.productName.length >= 3 && this.product.productCode) {
+      this.dataIsValid['info'] = true;
+    } else {
+      this.dataIsValid['info'] = false;
+    }
+
+    // Tab: tags
+    if(this.product.category.length && this.product.category.length >= 3) {
+      this.dataIsValid['tags'] = true;
+    } else {
+      this.dataIsValid['tags'] = false;
+    }
   }
 }
