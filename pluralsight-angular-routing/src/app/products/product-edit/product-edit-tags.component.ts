@@ -9,11 +9,15 @@ import { Product } from '../product';
 export class ProductEditTagsComponent implements OnInit {
   errorMessage: string;
   newTags = '';
-  product = { id: 1, category: 'test', tags: ['test'] };
+  product: Product;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private activatedRroute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRroute.parent.data
+      .subscribe(productData => {
+        this.product = productData['resolvedData'].product;
+      })
   }
 
   // Add the defined tags

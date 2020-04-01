@@ -8,13 +8,21 @@ import { Product } from '../product';
   templateUrl: './product-edit-info.component.html'
 })
 export class ProductEditInfoComponent implements OnInit {
-  @ViewChild(NgForm, {static: false}) productForm: NgForm;
+  @ViewChild(NgForm, { static: false }) productForm: NgForm;
 
   errorMessage: string;
-  product = { id: 1, productName: 'test', productCode: 'test' };
+  product: Product;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRoute.parent.data
+      .subscribe(productData => {
+        // Limpa a validacao do form aoo entrar na pagina de adição de produtos, como a pagina de edição utiliza o mesmo componente eh necessario realizar essa validacao para que se caso estivermos editando e o form ficar invalido, ao clicar em Add Product no menu essa validacao de campos nao permaneca
+        if(this.productForm) {
+          this.productForm.reset();
+        }
+        this.product = productData['resolvedData'].product;
+      })
   }
 }
