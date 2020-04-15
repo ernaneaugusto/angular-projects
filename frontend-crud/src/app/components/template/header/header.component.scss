@@ -1,0 +1,28 @@
+$blue: #3498db;
+$black: #333;
+
+.header {
+    display: flex;
+    align-items: center;
+}
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid $blue;
+    img {
+        width: 100%;
+    }
+}
+.link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $black;
+}
+.title-group {
+    padding-left: 20px;
+    i {
+        margin-right: 5px;
+    }
+}
