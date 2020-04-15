@@ -1,0 +1,19 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "name": "Notebook Dell",
+            "price": 3500.00
+        },
+        {
+            "id": 2,
+            "name": "Notebook Asus",
+            "price": 3300.00
+        },
+        {
+            "id": 2,
+            "name": "Macbook",
+            "price": 15000.00
+        }
+    ]
+}
