@@ -8,18 +8,18 @@
         >
         <mat-nav-list>
             <a
-                href=""
+                href="/"
                 mat-list-item>
                 <i class="material-icons">home</i> Início
             </a>
             <a
-                href=""
+                href="/products"
                 mat-list-item>
                 <i class="material-icons">storefront</i> Produtos
             </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content class="content">
-        <app-home></app-home>
+        <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
