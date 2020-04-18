@@ -28,4 +28,8 @@ export class ProductsService {
 	public create(product: ProductModel): Observable<ProductModel> {
 		return this.http.post<ProductModel>(`${this.baseUrl}/products`, product);
 	}
+
+	public getProducts(): Observable<ProductModel[]> {
+		return this.http.get<ProductModel[]>(`${this.baseUrl}/products`);
+	}
 }
