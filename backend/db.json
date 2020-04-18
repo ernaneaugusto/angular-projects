@@ -19,6 +19,16 @@
       "name": "Produto teste 1",
       "price": 123.99,
       "id": 3
+    },
+    {
+      "name": "dasdasdada",
+      "price": 2,
+      "id": 4
+    },
+    {
+      "name": "dadas",
+      "price": 222,
+      "id": 5
     }
   ]
 }

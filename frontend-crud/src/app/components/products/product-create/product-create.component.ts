@@ -11,9 +11,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ProductCreateComponent implements OnInit {
 
-	product: ProductModel = {
-		name: 'Produto teste 1',
-		price: 123.99
+	public product: ProductModel = {
+		name: '',
+		price: null
 	}
 
 	constructor(
@@ -24,14 +24,19 @@ export class ProductCreateComponent implements OnInit {
 	ngOnInit(): void { }
 
 	public createProduct(): void {
-		this.productsService
-			.create(this.product)
-			.subscribe((res: ProductModel) => {
-				this.productsService.showMessage(`"${res.name}" criado com sucesso!`);
-			},
-				(error: HttpErrorResponse) => {
-					console.log("Erro:", error.message);
-				})
+		if (this.product.name && this.product.price) {
+			this.productsService
+				.create(this.product)
+				.subscribe((res: ProductModel) => {
+					this.productsService.showMessage(`"${res.name}" criado com sucesso!`);
+				},
+					(error: HttpErrorResponse) => {
+						console.log("Erro:", error.message);
+					})
+		} else {
+			this.productsService.showMessage(`Preencha todos os campos do formulário!`);
+			return;
+		}
 	}
 
 	public cancel(): void {
