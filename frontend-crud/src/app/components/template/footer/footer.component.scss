@@ -9,6 +9,7 @@ $blue: #3498db;
     display: flex;
     justify-content: center;
     font-weight: 300;
+    z-index: 100;
 }
 .red {
     color: $red;
