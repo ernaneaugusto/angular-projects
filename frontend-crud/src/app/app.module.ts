@@ -25,6 +25,10 @@ import { ProductCreateComponent } from './components/products/product-create/pro
 import { RedDirective } from './directives/red.directive';
 import { MyForDirective } from './directives/my-for.directive';
 import { ProductListComponent } from './components/products/product-list/product-list.component';
+import { ProductListSchematicsExampleComponent } from './components/products/product-list-schematics-example/product-list-schematics-example.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,8 @@ import { ProductListComponent } from './components/products/product-list/product
     ProductCreateComponent,
     RedDirective,
     MyForDirective,
-    ProductListComponent
+    ProductListComponent,
+    ProductListSchematicsExampleComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +58,9 @@ import { ProductListComponent } from './components/products/product-list/product
     MatSnackBarModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
