@@ -12,3 +12,22 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .subtitle {
     font-size: 1.1rem;
 }
+
+.mat-snack-bar-container {
+    &.alert-success,
+    &.alert-danger {
+        .mat-focus-indicator {
+            color: #fff;
+        }
+    }
+}
+
+.alert-success {
+    color: #fff;
+    background-color: #28a745;
+}
+.alert-danger {
+    color: #fff;
+    background-color: #e74c3c;
+}
+
