@@ -31,6 +31,7 @@ import { ProductListSchematicsExampleComponent } from './components/products/pro
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
 
 registerLocaleData(localePt);
 
@@ -46,7 +47,8 @@ registerLocaleData(localePt);
     RedDirective,
     MyForDirective,
     ProductListComponent,
-    ProductListSchematicsExampleComponent
+    ProductListSchematicsExampleComponent,
+    ProductEditComponent
   ],
   imports: [
     BrowserModule,
