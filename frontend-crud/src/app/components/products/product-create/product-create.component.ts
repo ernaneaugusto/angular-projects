@@ -29,6 +29,7 @@ export class ProductCreateComponent implements OnInit {
 				.create(this.product)
 				.subscribe((res: ProductModel) => {
 					this.productsService.showMessage(`"${res.name}" criado com sucesso!`);
+					this.router.navigate(['/products']);
 				},
 					(error: HttpErrorResponse) => {
 						console.log("Erro:", error.message);

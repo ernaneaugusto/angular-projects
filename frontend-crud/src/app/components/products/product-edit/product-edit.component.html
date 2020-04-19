@@ -1,1 +1,38 @@
-<p>product-edit works!</p>
+<mat-card>
+    <mat-card-title class="title">Editar produto</mat-card-title>
+    <mat-card-subtitle class="subtitle">Edite produtos existentes no sistema</mat-card-subtitle>
+
+    <form class="form">
+        <mat-form-field>
+            <input 
+                type="text" 
+                matInput 
+                placeholder="Nome do produto"
+                name="name"
+                [(ngModel)]="product.name"
+                required />
+            </mat-form-field>
+            <mat-form-field>
+                <input
+                    type="number"
+                    matInput
+                    placeholder="Preço (R$)"
+                    min="0"
+                    name="price"
+                    [(ngModel)]="product.price"
+                    required />
+        </mat-form-field>
+        <div>
+            <button
+                mat-raised-button
+                color="primary"
+                (click)="editProduct()">Salvar
+            </button>
+            <button
+                mat-raised-button
+                color="secondary"
+                (click)="cancel()">Voltar
+            </button>
+        </div>
+    </form>
+</mat-card>
