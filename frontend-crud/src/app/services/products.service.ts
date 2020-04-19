@@ -32,4 +32,12 @@ export class ProductsService {
 	public getProducts(): Observable<ProductModel[]> {
 		return this.http.get<ProductModel[]>(`${this.baseUrl}/products`);
 	}
+	
+	public getProductsById(id: string): Observable<ProductModel> {
+		return this.http.get<ProductModel>(`${this.baseUrl}/products/${id}`);
+	}
+	
+	public update(product: ProductModel): Observable<ProductModel> {
+		return this.http.put<ProductModel>(`${this.baseUrl}/products/${product.id}`, product);
+	}
 }
