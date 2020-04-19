@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductListComponent implements OnInit {
 
     public products: ProductModel[];
-    public displayedColumns: Array<string> = ['id', 'name', 'price'];
+    public displayedColumns: Array<string> = ['id', 'name', 'price', 'action'];
 
     constructor(private productsService: ProductsService) { }
 
@@ -24,6 +24,6 @@ export class ProductListComponent implements OnInit {
             .subscribe((products: ProductModel[]) => {
                 this.products = products;
             })
-    }
+    }    
 
 }
