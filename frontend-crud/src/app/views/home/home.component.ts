@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public githubUrl: string = 'https://github.com/ernaneaugusto/angular-projects/tree/udemy-crud-angular-9';
+
   constructor() { }
 
   ngOnInit(): void {
