@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductListComponent implements OnInit {
 
     public products: ProductModel[];
+    public displayedColumns: Array<string> = ['id', 'name', 'price'];
 
     constructor(private productsService: ProductsService) { }
 
