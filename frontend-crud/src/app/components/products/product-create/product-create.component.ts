@@ -35,7 +35,7 @@ export class ProductCreateComponent implements OnInit {
 						console.log("Erro:", error.message);
 					})
 		} else {
-			this.productsService.showMessage(`Preencha todos os campos do formulário!`);
+			this.productsService.showMessage(`Preencha todos os campos do formulário!`, true);
 			return;
 		}
 	}

@@ -25,10 +25,6 @@ export class ProductListComponent implements OnInit {
             .subscribe((products: ProductModel[]) => {
                 this.products = products;
             }, (error: HttpErrorResponse) => {
-                if (error.statusText == 'Unknown Error' && error.status == 0) {
-                    alert('JSON Server não está sendo executado! \nVerifique mais informações em README.md');
-                    return;
-                }
                 console.log('ERROR', error.message);
             })
     }
