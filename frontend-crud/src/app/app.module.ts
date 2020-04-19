@@ -32,6 +32,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { ProductEditComponent } from './components/products/product-edit/product-edit.component';
+import { ProductDeleteComponent } from './components/products/product-delete/product-delete.component';
 
 registerLocaleData(localePt);
 
@@ -48,7 +49,8 @@ registerLocaleData(localePt);
     MyForDirective,
     ProductListComponent,
     ProductListSchematicsExampleComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductDeleteComponent
   ],
   imports: [
     BrowserModule,
