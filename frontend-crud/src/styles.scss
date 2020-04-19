@@ -31,3 +31,15 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     background-color: #e74c3c;
 }
 
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+
+    > div {
+        margin-top: 20px;
+    }
+    button {
+        margin-right: 15px;
+    }
+}
