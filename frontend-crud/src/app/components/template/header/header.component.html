@@ -1,10 +1,15 @@
 <mat-toolbar class="header mat-elevation-z3">
     <span class="logo">
-        <a routerLink="/">
+        <a routerLink="/" title="Voltar à Home">
             <img src="https://seeklogo.net/wp-content/uploads/2014/11/google-developers-logo.png" alt="Logo">
         </a>
     </span>
     <span class="title-group">
-        <a href="" class="link">App CRUD</a>
+        <span>App CRUD /
+            <i class="material-icons">
+                {{ icon }}
+            </i>
+            <a [href]="routerUrl" [title]="title">{{ title }}</a>
+        </span>
     </span>
 </mat-toolbar>
