@@ -22,7 +22,11 @@
     </li>
     <li class="nav-item">
       <a class="nav-link"
-        [routerLink]="[{ outlets: { popup: ['messages'] }}]">Show Messages</a>
+        (click)="showMessages()"
+        *ngIf="!isMessageDisplayed">Show Messages</a>
+      <a class="nav-link"
+        (click)="hideMessages()"
+        *ngIf="isMessageDisplayed">Hide Messages</a>
     </li>
     <li class="nav-item"
         *ngIf="!isLoggedIn">

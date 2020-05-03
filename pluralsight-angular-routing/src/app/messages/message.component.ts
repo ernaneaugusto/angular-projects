@@ -18,6 +18,7 @@ export class MessageComponent {
               private router: Router) { }
 
   close(): void {
-    // Close the popup.
+    this.messageService.isDisplayed = false;
+    this.router.navigate([{ outlets: { popup: null }}]);
   }
 }

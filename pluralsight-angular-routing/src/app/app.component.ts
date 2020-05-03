@@ -1,3 +1,4 @@
+import { MessageService } from './messages/message.service';
 import { Component } from '@angular/core';
 import { Router, Event, NavigationStart, NavigationEnd, NavigationCancel, NavigationError } from '@angular/router';
 
@@ -14,6 +15,31 @@ export class AppComponent {
   pageTitle = 'Acme Product Management';
   loading: boolean = true;
 
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private messageService: MessageService
+  ) {
+    // Comecamos a assistir os eventos de navegacao de rotas no constructor
+    this.router.events.subscribe((routerEvent: Event) => {
+      this.checkRouterEvent(routerEvent);
+    });
+  }
+
+  public showMessages(): void {
+    this.messageService.isDisplayed = true;
+    this.router.navigate([{ outlets: { popup: ['messages'] } }]);
+  }
+  
+  public hideMessages(): void {
+    this.messageService.isDisplayed = false;
+    this.router.navigate([{ outlets: { popup: null }}]);
+  }
+
+  get isMessageDisplayed(): boolean {
+    return this.messageService.isDisplayed;
+  }
+
   get isLoggedIn(): boolean {
     return this.authService.isLoggedIn;
   }
@@ -23,16 +49,6 @@ export class AppComponent {
       return this.authService.currentUser.userName;
     }
     return '';
-  }
-
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {
-    // Comecamos a assistir os eventos de navegacao de rotas no constructor
-    this.router.events.subscribe((routerEvent: Event) => {
-      this.checkRouterEvent(routerEvent);
-    });
   }
 
   checkRouterEvent(routerEvent: Event) {
