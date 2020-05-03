@@ -12,7 +12,10 @@ const ROUTES: Routes = [
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(ROUTES, { enableTracing: true }) // enableTracing: habilita debug de navegacao a cada rota acessada(ver console do navegador)
+        RouterModule.forRoot(
+            ROUTES,
+            //{ enableTracing: true }
+        ) // enableTracing: habilita debug de navegacao a cada rota acessada(ver console do navegador)
     ],
     exports: [
         RouterModule

@@ -9,10 +9,12 @@ import { ProductEditTagsComponent } from './product-edit/product-edit-tags.compo
 
 import { SharedModule } from '../shared/shared.module';
 import { ProductResolver } from './product-resolver.service';
+import { AuthGuard } from '../user/auth.guard';
 
 const ROUTES: Routes = [
   {
     path: 'products',
+    canActivate: [ AuthGuard ],
     children: [
       {
         path: '',
