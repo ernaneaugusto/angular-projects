@@ -9,7 +9,8 @@ const ROUTES: Routes = [
     { path: 'home', redirectTo: 'welcome', pathMatch: 'full' }, // redirecionamento de rotas
     {
         path: 'products',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard], // canActivate: protege a navegacao para uma rota carregando seus arquivos na aba Network do navegador 
+        canLoad: [AuthGuard], // canLoad: protege a navegacao para uma rota e nao permite o carregamento dos arquivos do modulo na aba Network do navegador, rpotegendo os os modulos carregados com Lazy Loading
         loadChildren: () => import('./products/product.module').then(module => module.ProductModule)
     },
     { path: 'welcome', component: WelcomeComponent },
