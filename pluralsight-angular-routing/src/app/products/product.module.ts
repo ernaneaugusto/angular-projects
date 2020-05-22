@@ -1,3 +1,4 @@
+import { ProductEditGuard } from './product-edit/product-edit.guard';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -14,7 +15,7 @@ import { AuthGuard } from '../user/auth.guard';
 const ROUTES: Routes = [
   {
     path: 'products',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -28,6 +29,7 @@ const ROUTES: Routes = [
       {
         path: ':id/edit',
         component: ProductEditComponent,
+        canDeactivate: [ProductEditGuard],
         resolve: { resolvedData: ProductResolver },
         children: [
           { path: '', redirectTo: 'info', pathMatch: 'full' },

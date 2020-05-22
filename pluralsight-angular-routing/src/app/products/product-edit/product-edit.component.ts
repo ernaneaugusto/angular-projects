@@ -14,8 +14,10 @@ export class ProductEditComponent implements OnInit {
   pageTitle = 'Product Edit';
   errorMessage: string;
 
-  product: Product;
   private dataIsValid: { [key: string]: boolean } = {};
+
+  private currentProduct: Product;
+  private originalProduct: Product;
 
   constructor(
     private productService: ProductService,
@@ -23,6 +25,18 @@ export class ProductEditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private route: Router
   ) { }
+
+  get product(): Product {
+    return this.currentProduct;
+  }
+  set product(value: Product) {
+    this.currentProduct = value;
+    this.originalProduct = { ...value };
+  }
+
+  get isDirty(): boolean {
+    return JSON.stringify(this.originalProduct) !== JSON.stringify(this.currentProduct);
+  }
 
   ngOnInit() {
     // Com this.route.snapshot.paramMap sem o susbcribe o componente eh atualizado apenas 1 vez, com isso, caso algum parametro da rota seja mudado, como o ID do produto, o componente nao eh atualizado com as novas informacoes desse produto, para que essa atualizacao ocorra deve-se utilizar o subscribe
@@ -97,11 +111,17 @@ export class ProductEditComponent implements OnInit {
       this.errorMessage = 'Please correct the validation errors.';
     }
   }
+  public resetProduct() {
+    this.dataIsValid = null;
+    this.currentProduct = null;
+    this.originalProduct = null;
+  }
 
   onSaveComplete(message?: string): void {
     if (message) {
       this.messageService.addMessage(message);
     }
+    this.resetProduct(); // reseta as propriedades para que ao sair da página de edição não seja exibida a mensagem de confirmação de edição de produto mesmo ao alterar e salvar os dados do produto
 
     // Navigate back to the product list
     this.route.navigateByUrl('/products');
