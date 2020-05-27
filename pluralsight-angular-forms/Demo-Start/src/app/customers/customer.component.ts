@@ -80,11 +80,29 @@ export class CustomerComponent implements OnInit {
         '',
         [Validators.required]
       ],
+      phone: [
+        '', // validacao sera alterada dependendo da opcao selecionadav pelo usuario no campo notification
+        []
+      ],
+      notification: [
+        'email', // value padrao para a opcao do botao radio
+        [Validators.required]
+      ],
       sendCatalog: [
         true,
         []
       ]
     });
+  }
+
+  public validateInputPhone(notifyVia: string): void { // atributo notifyVia deve ser igual ao value de cada um dos radio buttons
+    const phoneControl = this.customerForm.get('phone');
+    if (notifyVia === 'text') {
+      phoneControl.setValidators([Validators.required, Validators.minLength(8)]);
+    } else {
+      phoneControl.clearValidators();
+    }
+    phoneControl.updateValueAndValidity();
   }
 
   public save() {
