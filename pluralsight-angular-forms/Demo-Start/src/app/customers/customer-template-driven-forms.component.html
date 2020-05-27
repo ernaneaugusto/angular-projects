@@ -1,3 +1,4 @@
+<!-- Exemplo de template com template driven forms -->
 <div class="card">
   <div class="card-header">
     Sign Up!
@@ -5,8 +6,8 @@
 
   <div class="card-body">
     <form novalidate
-          (ngSubmit)="save()"
-          [formGroup]="customerForm">
+          (ngSubmit)="save(signupForm)"
+          #signupForm="ngForm">
 
       <div class="form-group row mb-2">
         <label class="col-md-2 col-form-label"
@@ -18,13 +19,15 @@
                  placeholder="First Name (required)"
                  required
                  minlength="3"
-                 formControlName="firstName"
-                 [ngClass]="{'is-invalid': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid }" />
+                 [(ngModel)]=customer.firstName
+                 name="firstName"
+                 #firstNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid }" />
           <span class="invalid-feedback">
-            <span *ngIf="customerForm.get('firstName').errors?.required">
+            <span *ngIf="firstNameVar.errors?.required">
               Please enter your first name.
             </span>
-            <span *ngIf="customerForm.get('firstName').errors?.minlength">
+            <span *ngIf="firstNameVar.errors?.minlength">
               The first name must be longer than 3 characters.
             </span>
           </span>
@@ -41,13 +44,15 @@
                  placeholder="Last Name (required)"
                  required
                  maxlength="50"
-                 formControlName="lastName"
-                 [ngClass]="{'is-invalid': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid }" />
+                 [(ngModel)]="customer.lastName"
+                 name="lastName"
+                 #lastNameVar="ngModel"
+                 [ngClass]="{'is-invalid': (lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid }" />
           <span class="invalid-feedback">
-            <span *ngIf="customerForm.get('lastName').errors?.required">
+            <span *ngIf="lastNameVar.errors?.required">
               Please enter your last name.
             </span>
-            <span *ngIf="customerForm.get('lastName').errors?.maxlength">
+            <span *ngIf="lastNameVar.errors?.maxlength">
               The last name must be less than 50 characters.
             </span>
           </span>
@@ -64,13 +69,15 @@
                  placeholder="Email (required)"
                  required
                  email
-                 formControlName="email"
-                 [ngClass]="{'is-invalid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }" />
+                 [(ngModel)]="customer.email"
+                 name="email"
+                 #emailVar="ngModel"
+                 [ngClass]="{'is-invalid': (emailVar.touched || emailVar.dirty) && !emailVar.valid }" />
           <span class="invalid-feedback">
-            <span *ngIf="customerForm.get('email').errors?.required">
+            <span *ngIf="emailVar.errors?.required">
               Please enter your email address.
             </span>
-            <span *ngIf="customerForm.get('email').errors?.email">
+            <span *ngIf="emailVar.errors?.email">
               Please enter a valid email address.
             </span>
           </span>
@@ -84,13 +91,14 @@
               <input class="form-check-input"
                      id="sendCatalogId"
                      type="checkbox"
-                     formControlName="sendCatalog"> Send me your catalog
+                     [(ngModel)]="customer.sendCatalog"
+                     name="sendCatalog"> Send me your catalog
             </label>
           </div>
         </div>
       </div>
 
-      <!-- <div *ngIf="customer.sendCatalog">
+      <div *ngIf="customer.sendCatalog">
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label pt-0">Address Type</label>
           <div class="col-md-8">
@@ -100,7 +108,8 @@
                        id="addressType1Id"
                        type="radio"
                        value="home"
-                       formControlName="addressType"> Home
+                       [(ngModel)]="customer.addressType"
+                       name="addressType"> Home
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -109,7 +118,8 @@
                        id="addressType1Id"
                        type="radio"
                        value="work"
-                       formControlName="addressType"> Work
+                       [(ngModel)]="customer.addressType"
+                       name="addressType"> Work
               </label>
             </div>
             <div class="form-check form-check-inline">
@@ -118,7 +128,8 @@
                        id="addressType1Id"
                        type="radio"
                        value="other"
-                       formControlName="addressType"> Other
+                       [(ngModel)]="customer.addressType"
+                       name="addressType"> Other
               </label>
             </div>
           </div>
@@ -132,7 +143,8 @@
                    id="street1Id"
                    type="text"
                    placeholder="Street address"
-                   formControlName="street1">
+                   [(ngModel)]="customer.street1"
+                   name="street1">
           </div>
         </div>
 
@@ -144,7 +156,8 @@
                    id="street2Id"
                    type="text"
                    placeholder="Street address (second line)"
-                   formControlName="street2">
+                   [(ngModel)]="customer.street2"
+                   name="street2">
           </div>
         </div>
 
@@ -156,12 +169,14 @@
                    id="cityId"
                    type="text"
                    placeholder="City"
-                   formControlName="city">
+                   [(ngModel)]="customer.city"
+                   name="city">
           </div>
           <div class="col-md-3">
             <select class="form-control"
                     id="stateId"
-                    formControlName="state">
+                    [(ngModel)]="customer.state"
+                    name="state">
               <option value=""
                       disabled
                       selected
@@ -181,18 +196,19 @@
                    id="zipId"
                    type="number"
                    placeholder="Zip Code"
-                   formControlName="zip">
+                   [(ngModel)]="customer.zip"
+                   name="zip">
           </div>
         </div>
-      </div> -->
+      </div>
 
       <div class="form-group row mb-2">
         <div class="offset-md-2 col-md-4">
           <button class="btn btn-primary mr-3"
                   type="submit"
                   style="width:80px"
-                  [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!customerForm.valid">
+                  [title]="signupForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!signupForm.valid">
             Save
           </button>
         </div>
@@ -200,7 +216,7 @@
     </form>
   </div>
 </div>
-<br>Dirty: {{ customerForm.dirty }}
-<br>Touched: {{ customerForm.touched }}
-<br>Valid: {{ customerForm.valid }}
-<br>Value: {{ customerForm.value | json }}
+<br>Dirty: {{ signupForm.dirty }}
+<br>Touched: {{ signupForm.touched }}
+<br>Valid: {{ signupForm.valid }}
+<br>Value: {{ signupForm.value | json }}
