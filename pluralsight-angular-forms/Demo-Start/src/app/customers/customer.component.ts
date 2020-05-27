@@ -1,3 +1,4 @@
+import { MyCustomValidators } from './../shared/my-custom-validators';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
@@ -87,6 +88,10 @@ export class CustomerComponent implements OnInit {
       notification: [
         'email', // value padrao para a opcao do botao radio
         [Validators.required]
+      ],
+      rating: [
+        null, // null: valor padrao para campo numerico
+        [MyCustomValidators.ratingRange(1,5)] // funcao de validacao customizada
       ],
       sendCatalog: [
         true,
