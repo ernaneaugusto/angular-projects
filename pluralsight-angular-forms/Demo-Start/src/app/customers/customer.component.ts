@@ -11,6 +11,7 @@ import { Customer } from './customer';
 export class CustomerComponent implements OnInit {
   public customerForm: FormGroup;
   public customer = new Customer();
+  public testData: boolean = false;
 
   /**
    * 
@@ -37,8 +38,26 @@ export class CustomerComponent implements OnInit {
     })
   }
 
-  save() {
+  public save() {
     console.log(this.customerForm);
     console.log('Saved: ' + JSON.stringify(this.customerForm.value));
+  }
+
+  public populateTestData() {
+    // setValue: utilizado para alterar todos os campos do formulario
+    // this.customerForm.setValue({
+    //   firstName: 'FirstName setValue',
+    //   lastName: 'Lastname setValue',
+    //   email: 'E-mail setValue',
+    //   sendCatalog: false
+    // });
+
+    // patchValue: utilizado para alterar apenas alguns campos do formulario    
+    this.customerForm.patchValue({
+      firstName: 'FirstName setValue',
+      lastName: 'Lastname setValue'
+    });
+
+    this.testData = true;
   }
 }

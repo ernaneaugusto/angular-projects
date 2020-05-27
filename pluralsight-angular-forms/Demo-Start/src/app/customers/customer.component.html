@@ -4,22 +4,14 @@
   </div>
 
   <div class="card-body">
-    <form novalidate
-          (ngSubmit)="save()"
-          [formGroup]="customerForm">
+    <form novalidate (ngSubmit)="save()" [formGroup]="customerForm">
 
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label"
-               for="firstNameId">First Name</label>
+        <label class="col-md-2 col-form-label" for="firstNameId">First Name</label>
         <div class="col-md-8">
-          <input class="form-control"
-                 id="firstNameId"
-                 type="text"
-                 placeholder="First Name (required)"
-                 required
-                 minlength="3"
-                 formControlName="firstName"
-                 [ngClass]="{'is-invalid': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid }" />
+          <input class="form-control" id="firstNameId" type="text" placeholder="First Name (required)" required
+            minlength="3" formControlName="firstName"
+            [ngClass]="{'is-invalid': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid }" />
           <span class="invalid-feedback">
             <span *ngIf="customerForm.get('firstName').errors?.required">
               Please enter your first name.
@@ -32,17 +24,11 @@
       </div>
 
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label"
-               for="lastNameId">Last Name</label>
+        <label class="col-md-2 col-form-label" for="lastNameId">Last Name</label>
         <div class="col-md-8">
-          <input class="form-control"
-                 id="lastNameId"
-                 type="text"
-                 placeholder="Last Name (required)"
-                 required
-                 maxlength="50"
-                 formControlName="lastName"
-                 [ngClass]="{'is-invalid': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid }" />
+          <input class="form-control" id="lastNameId" type="text" placeholder="Last Name (required)" required
+            maxlength="50" formControlName="lastName"
+            [ngClass]="{'is-invalid': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid }" />
           <span class="invalid-feedback">
             <span *ngIf="customerForm.get('lastName').errors?.required">
               Please enter your last name.
@@ -55,17 +41,11 @@
       </div>
 
       <div class="form-group row mb-2">
-        <label class="col-md-2 col-form-label"
-               for="emailId">Email</label>
+        <label class="col-md-2 col-form-label" for="emailId">Email</label>
         <div class="col-md-8">
-          <input class="form-control"
-                 id="emailId"
-                 type="email"
-                 placeholder="Email (required)"
-                 required
-                 email
-                 formControlName="email"
-                 [ngClass]="{'is-invalid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }" />
+          <input class="form-control" id="emailId" type="email" placeholder="Email (required)" required email
+            formControlName="email"
+            [ngClass]="{'is-invalid': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid }" />
           <span class="invalid-feedback">
             <span *ngIf="customerForm.get('email').errors?.required">
               Please enter your email address.
@@ -81,10 +61,8 @@
         <div class="col-md-8">
           <div class="form-check">
             <label class="form-check-label">
-              <input class="form-check-input"
-                     id="sendCatalogId"
-                     type="checkbox"
-                     formControlName="sendCatalog"> Send me your catalog
+              <input class="form-check-input" id="sendCatalogId" type="checkbox" formControlName="sendCatalog"> Send me
+              your catalog
             </label>
           </div>
         </div>
@@ -188,19 +166,34 @@
 
       <div class="form-group row mb-2">
         <div class="offset-md-2 col-md-4">
-          <button class="btn btn-primary mr-3"
-                  type="submit"
-                  style="width:80px"
-                  [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!customerForm.valid">
+          <button class="btn btn-primary mr-3" type="submit" style="width:80px"
+            [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!customerForm.valid">
             Save
           </button>
+
+          <!-- Exemplo de uso patchValue/setValue -->
+          <button class="btn btn-warning" type="button" (click)="populateTestData()">Alterar dados setValue</button>
         </div>
       </div>
     </form>
   </div>
 </div>
-<br>Dirty: {{ customerForm.dirty }}
-<br>Touched: {{ customerForm.touched }}
-<br>Valid: {{ customerForm.valid }}
-<br>Value: {{ customerForm.value | json }}
+
+<div class="card mt-5">
+  <div class="card-body">
+    <p>Dirty: {{ customerForm.dirty }}</p>
+    <p>Touched: {{ customerForm.touched }}</p>
+    <p>Valid: {{ customerForm.valid }}</p>
+    <p>Value: {{ customerForm.value | json }}</p>
+
+    <div *ngIf="testData">
+      <hr class="my-5" />
+      <p>Dirty: {{ customerForm.dirty }}</p>
+      <p>Touched: {{ customerForm.touched }}</p>
+      <p>Valid: {{ customerForm.valid }}</p>
+      <p>Value: {{ customerForm.value | json }}</p>
+      <p class="alert alert-success">Dados de teste atualizado com sucesso! /o/</p>
+    </div>
+  </div>
+</div>
