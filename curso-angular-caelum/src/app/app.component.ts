@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
 	selector: 'app-root',
@@ -22,9 +23,11 @@ export class AppComponent {
 		this._isNewEmailFormOpen = !this.isNewEmailFormOpen;
 	}
 
-	public handleNewEmail(event: Event) {
-		event.preventDefault();
+	public handleNewEmail(formEmail: NgForm) {
 
+		console.log("## formEmail", formEmail);
+		if(formEmail.invalid) return;
+		
 		this.emailList.push(this.email);
 
 		this.email = {
