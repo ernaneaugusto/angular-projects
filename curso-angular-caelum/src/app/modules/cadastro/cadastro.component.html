@@ -3,24 +3,25 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid">
-                <form>
+                <form [formGroup]="formCadastro" (ngSubmit)="handleCadastrarUsuario()">
                     <app-form-group>
-                        <input autofocus required type="text" name="nome" cmailFormField>
+                        <input autofocus required type=" text" formControlName="nome" name="nome" cmailFormField>
                         <span class="mdl-textfield__error">Informar um nome é obrigatório!</span>
                     </app-form-group>
                     <app-form-group>
-                        <input required type="text" name="username" cmailFormField>
-                        <span class="mdl-textfield__error">Informar um nome de usuário é obrigatório!</span>
+                        <input required type="email" formControlName="email" name="email" cmailFormField>
+                        <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
                     </app-form-group>
                     <app-form-group>
-                        <input required type="password" name="senha" cmailFormField>
+                        <input required type="password" formControlName="senha" name="senha" cmailFormField>
                         <span class="mdl-textfield__error">Informar uma senha é obrigatório!</span>
                     </app-form-group>
                     <app-form-group>
-                        <input type="text" name="avatar" cmailFormField>
+                        <input type="text" formControlName="avatar" name="avatar" cmailFormField>
                     </app-form-group>
                     <div class="mdl-card__actions">
-                        <button class="mdl-button	mdl-js-button	mdl-button--raised	mdl-button--accent">
+                        <button class="mdl-button mdl-js-button	mdl-button--raised	mdl-button--accent"
+                            [disabled]="formCadastro.invalid">
                             Cadastrar
                         </button>
                     </div>
