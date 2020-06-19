@@ -43,7 +43,7 @@
  pointer-events: all;
 }
 
-cmail-form-component.css .cmailInputForm .mdl-textfield {
+app-form-component.css .cmailInputForm .mdl-textfield {
    color: #757575;
 }
 .cmailInputForm .mdl-textfield:focus-within {

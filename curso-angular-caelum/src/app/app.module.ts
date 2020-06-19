@@ -8,6 +8,8 @@ import { CaixaDeEntradaComponent } from './modules/caixa-de-entrada/caixa-de-ent
 import { LoginComponent } from './modules/login/login.component';
 import { RouterModule } from '@angular/router';
 import { CadastroComponent } from './modules/cadastro/cadastro.component';
+import { FormGroupComponent } from './components/form-group/form-group.component';
+import { FormFieldDirective } from './components/form-group/form-field.directive';
 
 
 @NgModule({
@@ -17,6 +19,8 @@ import { CadastroComponent } from './modules/cadastro/cadastro.component';
     CaixaDeEntradaComponent,
     CadastroComponent,
     LoginComponent,
+    FormGroupComponent,
+    FormFieldDirective,
   ],
   imports: [
     BrowserModule,
