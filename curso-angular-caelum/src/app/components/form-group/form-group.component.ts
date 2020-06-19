@@ -1,4 +1,5 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Component, OnInit, ElementRef, Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-group',
@@ -8,6 +9,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 export class FormGroupComponent implements OnInit {
   public textoDaLabel = '';
   public idCampo = '';
+  @Input()	campo	=	new	FormControl();
 
   constructor(private elemento: ElementRef) { }
 

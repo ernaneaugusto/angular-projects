@@ -4,20 +4,37 @@
         <div class="page-content">
             <div class="mdl-grid">
                 <form [formGroup]="formCadastro" (ngSubmit)="handleCadastrarUsuario()">
-                    <app-form-group>
+                    <app-form-group [campo]="formCadastro.get('nome')">
                         <input autofocus required type=" text" formControlName="nome" name="nome" cmailFormField>
-                        <span class="mdl-textfield__error">Informar um nome é obrigatório!</span>
+                        <span class="mdl-textfield__error">Informar um nome é obrigatório!
+                            <span style="margin-top: 15px" *ngIf="formCadastro.get('nome').hasError('minlength')">A
+                                senha deve conter pelo menos
+                                {{formCadastro.get('nome').getError('minlength').requiredLength}} caracteres </span>
+                        </span>
                     </app-form-group>
-                    <app-form-group>
+                    <app-form-group [campo]="formCadastro.get('email')">
                         <input required type="email" formControlName="email" name="email" cmailFormField>
                         <span class="mdl-textfield__error">Informar um email é obrigatório!</span>
                     </app-form-group>
-                    <app-form-group>
+                    <app-form-group [campo]="formCadastro.get('telefone')">
+                        <input formControlName="telefone" required type="text" name="telefone" cmailFormField>
+                        <div *ngIf="formCadastro.get('telefone').errors">
+                            <span class="mdl-textfield__error" *ngIf="formCadastro.get('telefone').errors.required">
+                                Informar um telefone é obrigatório!
+                            </span>
+                            <span class="mdl-textfield__error" *ngIf="formCadastro.get('telefone').errors.pattern">
+                                O telefone deve conter 8 ou 9 números.
+                                <!--	{{formCadastro.get('telefone').errors.pattern.requiredPattern	}}	-->
+                            </span>
+                        </div>
+                    </app-form-group>
+                    <app-form-group [campo]="formCadastro.get('senha')">
                         <input required type="password" formControlName="senha" name="senha" cmailFormField>
                         <span class="mdl-textfield__error">Informar uma senha é obrigatório!</span>
                     </app-form-group>
-                    <app-form-group>
+                    <app-form-group [campo]="formCadastro.get('avatar')">
                         <input type="text" formControlName="avatar" name="avatar" cmailFormField>
+                        <span class="mdl-textfield__error">Informar avatar é obrigatório!</span>
                     </app-form-group>
                     <div class="mdl-card__actions">
                         <button class="mdl-button mdl-js-button	mdl-button--raised	mdl-button--accent"
