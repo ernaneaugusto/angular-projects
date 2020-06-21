@@ -50,7 +50,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 	private updateCategoriesEmit() {
 		this.categoriesAmount++;
 		this.categoriesModel = Utils.sortArrayObjects(this.categories, 'category');
-		this.categoriesTableUpdated.emit([this.categories, this.categoriesAmount]);
+		this.categoriesTableUpdated.emit([this.categoriesModel, this.categoriesAmount]);
 	}
 
 	// retorna a variavel private de categoriesModel para que ela nao seja acessivel fora da classe
@@ -99,7 +99,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 			)
 			.subscribe((cat) => {
 				console.log("### Dados cadastrados com sucesso!", cat);
-				this.categories.push(cat);
+				this.categoriesModel.push(cat);
 				this.updateCategoriesEmit();
 			},
 				(error) => {

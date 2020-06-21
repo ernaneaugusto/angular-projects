@@ -1,10 +1,11 @@
+import { URL } from './../../../core/urls';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CategoriesModel } from './../../../shared/models/categories.model';
 import { CategoriesService } from './../../../services/categories/categories.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -38,7 +39,8 @@ export class MainCategoriesEditComponent implements OnInit, OnDestroy {
     // injeta os servicos CategoriesService e ActivatedRoute ao componente para que seja possivel utiliza-los no componente
     constructor(
         private service: CategoriesService,
-        private activatedRoute: ActivatedRoute
+        private activatedRoute: ActivatedRoute,
+        private router: Router
     ) { }
 
     ngOnInit(): void {
@@ -95,7 +97,7 @@ export class MainCategoriesEditComponent implements OnInit, OnDestroy {
             )
             .subscribe((category: CategoriesModel) => {
                 console.log("## Dados atualizados!", category);
-                this.hasCategorySuccess = true;
+                this.router.navigate([URL.categories]);
             }, (error: HttpErrorResponse) => {
                 console.log("## error", error);
                 this.hasCategoryError = true;

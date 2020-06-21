@@ -56,8 +56,8 @@
                                         <td>{{ category.category }}</td>
                                         <td>{{ category.description }}</td>
                                         <td>
-                                            <a class="btn btn-default btn-sm" routerLink="/categories/{{category.id}}" title="Editar Categoria"><i class="fas fa-edit"></i></a>
-                                            <a class="btn btn-danger btn-sm" routerLink="/categories/{{category.id}}" title="Excluir Categoria"><i class="fas fa-trash"></i></a>
+                                            <a class="btn btn-default btn-sm mr-2" routerLink="/categories/edit/{{category.id}}" title="Editar Categoria"><i class="fas fa-edit m-0"></i></a>
+                                            <a class="btn btn-danger btn-sm mr-2" routerLink="/categories/delete/{{category.id}}" title="Excluir Categoria"><i class="fas fa-trash m-0"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
