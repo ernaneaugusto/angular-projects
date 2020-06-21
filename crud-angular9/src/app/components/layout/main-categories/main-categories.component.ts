@@ -1,10 +1,11 @@
-import { CategoriesModel } from './../../../shared/models/categories.model';
-import { CategoriesService } from './../../../services/categories/categories.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Utils } from 'src/app/shared/utils';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { CategoriesModel } from './../../../shared/models/categories.model';
+import { CategoriesService } from './../../../services/categories/categories.service';
+import { Utils } from 'src/app/shared/utils';
 
 @Component({
 	selector: 'app-main-categories',
@@ -16,6 +17,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 	private categoriesModel: Array<CategoriesModel>;
 	private categoriesObs$: Subscription;
 	
+	public hasCategoriesError: boolean = false;
 	public categoriesAmount: number;
 	// dados para validacao do form de categorias
 	public formCategories: FormGroup = new FormGroup({
@@ -73,7 +75,11 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 
 				// ordena um array de objetos do tipo CategoriesModel
 				this.categoriesModel = Utils.sortArrayObjects(arrayCategories);
-			});
+			},
+				(error: HttpErrorResponse) => {
+					console.log("### erro", error);
+					this.hasCategoriesError = true;
+				});
 	}
 
 }
