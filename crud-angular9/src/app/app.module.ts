@@ -19,6 +19,8 @@ import { MainCategoriesComponent } from './components/layout/main-categories/mai
 import { FormExpensesComponent } from './shared/components/form-expenses/form-expenses.component';
 
 import { CategoriesService } from './services/categories/categories.service';
+import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
+import { MainCategoriesEditComponent } from './components/layout/main-categories-edit/main-categories-edit.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { CategoriesService } from './services/categories/categories.service';
     MainHomeComponent,
     MainExpensesComponent,
     MainCategoriesComponent,
-    FormExpensesComponent
+    FormExpensesComponent,
+    CategoriesEditComponent,
+    MainCategoriesEditComponent
   ],
   imports: [
     BrowserModule,

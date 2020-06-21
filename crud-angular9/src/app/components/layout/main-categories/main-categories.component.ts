@@ -58,7 +58,7 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 		return this.categoriesModel;
 	}
 
-	// valida e submete os dados do form para cadastro no 'banco de dados'
+	// valida e submete os dados do form para cadastro para o 'banco de dados'
 	public submitFormCategories(): void {
 		if (this.formCategories.valid) {
 			const data = new CategoriesModel(this.formCategories.value);
