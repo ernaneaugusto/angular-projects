@@ -6,15 +6,18 @@
         },
         {
             "id": 2,
-            "name": "Mercado"
+            "name": "Mercado",
+            "description": "Descrição categoria Mercado"
         },
         {
             "id": 3,
-            "name": "Tecnologia"
+            "name": "Tecnologia",
+            "description": "Descrição categoria Mercado"
         },
         {
             "id": 4,
-            "name": "Higiene"
+            "name": "Higiene",
+            "description": ""
         }
     ],
     "expenses": [
