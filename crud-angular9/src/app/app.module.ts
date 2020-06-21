@@ -1,9 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { HomeComponent } from './pages/home/home.component';
 import { ExpensesComponent } from './pages/expenses/expenses.component';
@@ -16,6 +17,8 @@ import { MainHomeComponent } from './components/layout/main-home/main-home.compo
 import { MainExpensesComponent } from './components/layout/main-expenses/main-expenses.component';
 import { MainCategoriesComponent } from './components/layout/main-categories/main-categories.component';
 import { FormExpensesComponent } from './shared/components/form-expenses/form-expenses.component';
+
+import { CategoriesService } from './services/categories/categories.service';
 
 @NgModule({
   declarations: [
@@ -35,9 +38,12 @@ import { FormExpensesComponent } from './shared/components/form-expenses/form-ex
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    CategoriesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -34,11 +34,14 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="text-right">
+
+                        <div *ngIf="categoriesAmount === 0" class="alert alert-info my-4">Você ainda não tem nenhuma <strong>Categoria</strong> cadastrada.</div>
+
+                        <div class="text-right" *ngIf="categoriesAmount !== 0">
                             <p class="alert alert-info d-inline-block">Total de categorias: <span
-                                    class="badge badge-primary py-1 px-2 badge-pill">2</span></p>
+                                    class="badge badge-primary py-1 px-2 badge-pill">{{ categoriesAmount }}</span></p>
                         </div>
-                        <div class="table-responsive">
+                        <div class="table-responsive" *ngIf="categoriesAmount !== 0">
                             <table class="table table-striped mt-3">
                                 <thead>
                                     <tr>
@@ -47,21 +50,13 @@
                                         <th>Ações</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Alimentação</td>
-                                        <td>Gastos com alimentação</td>
+                                <tbody *ngIf="categories">
+                                    <tr *ngFor="let category of categories">
+                                        <td>{{ category?.name }}</td>
+                                        <td>{{ category?.description }}</td>
                                         <td>
                                             <a class="btn btn-default btn-sm"><i class="fas fa-edit"></i></a>
                                             <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cuidados pessoais</td>
-                                        <td>Higiene e beleza</td>
-                                        <td>
-                                            <a class="btn btn-default btn-sm" href="#"><i class="fas fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
