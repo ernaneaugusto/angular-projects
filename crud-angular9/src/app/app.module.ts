@@ -21,7 +21,7 @@ import { FormExpensesComponent } from './shared/components/form-expenses/form-ex
 import { CategoriesService } from './services/categories/categories.service';
 import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
 import { MainCategoriesEditComponent } from './components/layout/main-categories-edit/main-categories-edit.component';
-import { MainCategoryDeleteComponent } from './components/layout/main-category-delete/main-category-delete.component';
+import { MainCategoriesDeleteComponent } from './components/layout/main-categories-delete/main-categories-delete.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
 
 @NgModule({
@@ -40,7 +40,7 @@ import { CategoriesDeleteComponent } from './pages/categories-delete/categories-
     FormExpensesComponent,
     CategoriesEditComponent,
     MainCategoriesEditComponent,
-    MainCategoryDeleteComponent,
+    MainCategoriesDeleteComponent,
     CategoriesDeleteComponent
   ],
   imports: [

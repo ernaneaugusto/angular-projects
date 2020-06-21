@@ -1,19 +1,19 @@
-import { URL } from './../../../core/urls';
+import { URL } from '../../../core/urls';
 import { take } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
-import { CategoriesModel } from './../../../shared/models/categories.model';
-import { CategoriesService } from './../../../services/categories/categories.service';
+import { CategoriesModel } from '../../../shared/models/categories.model';
+import { CategoriesService } from '../../../services/categories/categories.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-main-category-delete',
-    templateUrl: './main-category-delete.component.html',
-    styleUrls: ['./main-category-delete.component.scss']
+    selector: 'app-main-categories-delete',
+    templateUrl: './main-categories-delete.component.html',
+    styleUrls: ['./main-categories-delete.component.scss']
 })
-export class MainCategoryDeleteComponent implements OnInit, OnDestroy {
+export class MainCategoriesDeleteComponent implements OnInit, OnDestroy {
 
     // variaveis para desinscrever do subscribe
     private activatedRouteObs$: Subscription;

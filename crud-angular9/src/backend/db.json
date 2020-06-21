@@ -2,7 +2,8 @@
   "categories": [
     {
       "id": 1,
-      "category": "Alimentos"
+      "category": "Alimentos",
+      "description": "Categoria de alimentos"
     },
     {
       "id": 2,
@@ -12,12 +13,17 @@
     {
       "id": 3,
       "category": "Tecnologia",
-      "description": "Descrição categoria Mercado"
+      "description": "Descrição Tecnologia"
     },
     {
       "id": 4,
       "category": "Higiene",
-      "description": ""
+      "description": "Cuidados pessoais"
+    },
+    {
+      "category": "Ifood",
+      "description": "Gastos com compras pelo Ifood",
+      "id": 5
     }
   ],
   "expenses": [
