@@ -1,0 +1,67 @@
+<main class="pt-5 mx-lg-3">
+    <div class="container-fluid mt-5">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="row wow fadeIn">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-12 col-lg-6 text-left">
+                                    <label for="">Nome da categoria</label>
+                                    <input autofocus type="text" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="Alimentação, Cuidados pessoais, Outros...">
+                                </div>
+                                <div class="col-12 col-lg-6 text-left">
+                                    <label for="">Descrição</label>
+                                    <input type="text" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="Gastos com alimentação, com vestuário, com a casa...">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-info" type="submit"><i class="fa fa-check"></i>
+                                        Salvar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="text-right">
+                            <p class="alert alert-info d-inline-block">Total de categorias: <span
+                                    class="badge badge-primary py-1 px-2 badge-pill">2</span></p>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Nome da categoria</th>
+                                        <th>Descrição</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Alimentação</td>
+                                        <td>Gastos com alimentação</td>
+                                        <td>
+                                            <a class="btn btn-default btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cuidados pessoais</td>
+                                        <td>Higiene e beleza</td>
+                                        <td>
+                                            <a class="btn btn-default btn-sm" href="#"><i
+                                                    class="fas fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="#"><i
+                                                    class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,16 @@
+<div class="sidebar-fixed position-fixed">
+    <a class="logo-wrapper waves-effect">
+        <img src="https://mdbootstrap.com/img/logo/mdb-email.png" class="img-fluid" alt>
+    </a>
+    <div class="list-group list-group-flush">
+        <a [routerLink]="['/']" class="list-group-item waves-effect" [routerLinkActive]="['active']">
+            <i class="fa fa-home mr-3"></i>Home
+        </a>
+        <a [routerLink]="['/expenses']" class="list-group-item list-group-item-action waves-effect"  [routerLinkActive]="['active']">
+            <i class="fa fa-money-bill-wave mr-3"></i>Gastos</a>
+        <a [routerLink]="['/categories']" class="list-group-item list-group-item-action waves-effect"  [routerLinkActive]="['active']">
+            <i class="fa fa-list-ul mr-3"></i>Categoria</a>
+        <!-- <a [routerLink]="['']" class="list-group-item list-group-item-action waves-effect"  [routerLinkActive]="['active']">
+            <i class="fa fa-user mr-3"></i>Desenvolvedor</a> -->
+    </div>
+</div>

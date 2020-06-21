@@ -1,0 +1,94 @@
+<main class="pt-5 mx-lg-3">
+    <div class="container-fluid mt-5">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="row wow fadeIn">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form class="mb-3">
+                            <div class="row">
+                                <div class="col-12 col-lg-4 text-left">
+                                    <label for="">Valor da compra</label>
+                                    <input autofocus type="nymber" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="0,00">
+                                </div>
+                                <div class="col-12 col-lg-4 text-left">
+                                    <label for="">Descrição do gasto</label>
+                                    <input type="text" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="Internet, Calça, Perfume...">
+                                </div>
+                                <div class="col-12 col-lg-4 text-left">
+                                    <label for="">Data da compra</label>
+                                    <input type="date" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="Data da compra">
+                                </div>
+                                <div class="col-12 col-lg-6 text-left">
+                                    <label for="">Categoria</label>
+                                    <select class="browser-default custom-select mb-4">
+                                        <option value="1" selected>Categoria 1</option>
+                                        <option value="2">Categoria 2</option>
+                                        <option value="3">Categoria 3</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-lg-6 text-left">
+                                    <label for="">Tag</label>
+                                    <input type="text" id="defaultContactFormName" class="form-control mb-4"
+                                        placeholder="Mercado, Ifood, Higiene...">
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-info" type="submit"><i class="fa fa-check"></i>
+                                        Salvar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                        <div class="text-right">
+                            <p class="alert alert-info d-inline-block">Total de compras: <span
+                                    class="badge badge-primary py-1 px-2 badge-pill">2</span></p>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th>Data da compra</th>
+                                        <th>Descrição</th>
+                                        <th>Valor</th>
+                                        <th>Categoria</th>
+                                        <th>Tag</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>20/06/2020</td>
+                                        <td>Ifood</td>
+                                        <td>R$ 20,00</td>
+                                        <td>Alimentação</td>
+                                        <td>Ifood</td>
+                                        <td>
+                                            <a class="btn btn-default btn-sm"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>22/06/2020</td>
+                                        <td>Vivo</td>
+                                        <td>R$99,90</td>
+                                        <td>Internet</td>
+                                        <td>Fixos mensais</td>
+                                        <td>
+                                            <a class="btn btn-default btn-sm" href="#"><i class="fas fa-edit"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
