@@ -9,15 +9,15 @@
                         <form [formGroup]="formCategories" (ngSubmit)="submitFormCategories()">
                             <div class="row">
                                 <div class="col-12 mt-3 col-lg-6 text-left">
-                                    <label for="categorie">Nome da categoria</label>
-                                    <input type="text" id="categorie" class="form-control mb-1"
+                                    <label for="category">Nome da categoria</label>
+                                    <input type="text" id="category" class="form-control mb-1"
                                         placeholder="Alimentação, Cuidados pessoais, Outros..." required
-                                        formControlName="categorie" name="categorie">
+                                        formControlName="category" name="category">
                                     <span class="text-danger d-block"
-                                        *ngIf="formCategories.get('categorie').touched && formCategories.get('categorie').getError('required')">Campo
+                                        *ngIf="formCategories.get('category').touched && formCategories.get('category').getError('required')">Campo
                                         obrigatório.</span>
                                     <span class="text-danger d-block"
-                                        *ngIf="formCategories.get('categorie').getError('minlength')">Preencha pelo
+                                        *ngIf="formCategories.get('category').getError('minlength')">Preencha pelo
                                         menos 2 caractes.</span>
                                 </div>
                                 <div class="col-12 mt-3 col-lg-6 text-left">

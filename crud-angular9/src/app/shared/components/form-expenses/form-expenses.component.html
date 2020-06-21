@@ -35,18 +35,18 @@
             <span class="text-success d-block" *ngIf="!formExpenses.get('purchaseDate').getError('required')">Ok</span>
         </div>
         <div class="col-12 col-lg-6 text-left mt-3">
-            <label for="categorie">Categoria</label>
-            <select class="browser-default custom-select mb-1" id="categorie" name="categorie"
-                formControlName="categorie">
+            <label for="category">Categoria</label>
+            <select class="browser-default custom-select mb-1" id="category" name="category"
+                formControlName="category">
                 <option value="" selected>-- Selecione a categoria</option>
                 <option value="1">Categoria 1</option>
                 <option value="2">Categoria 2</option>
                 <option value="3">Categoria 3</option>
             </select>
             <span class="text-danger d-block"
-                *ngIf="formExpenses.get('categorie').getError('required') && formExpenses.get('categorie').touched">Campo
+                *ngIf="formExpenses.get('category').getError('required') && formExpenses.get('category').touched">Campo
                 obrigatório</span>
-            <span class="text-success d-block" *ngIf="!formExpenses.get('categorie').getError('required')">Ok</span>
+            <span class="text-success d-block" *ngIf="!formExpenses.get('category').getError('required')">Ok</span>
         </div>
         <div class="col-12 col-lg-6 text-left mt-3">
             <label for="tag">Tag</label>
@@ -56,12 +56,12 @@
         </div>
 
         <div *ngIf="!isModal" class="col-12 mt-3">
-            <button class="btn btn-info" type="submit"><i class="fa fa-check"></i>
+            <button [disabled]="formExpenses.invalid" class="btn btn-info" type="submit"><i class="fa fa-check"></i>
                 Salvar</button>
         </div>
 
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
-            <button class="btn btn-info btn-block" type="submit"><i class="fa fa-check"></i>
+            <button [disabled]="formExpenses.invalid" class="btn btn-info btn-block" type="submit"><i class="fa fa-check"></i>
                 Salvar</button>
         </div>
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">

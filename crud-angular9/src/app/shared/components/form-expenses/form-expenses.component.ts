@@ -24,7 +24,7 @@ export class FormExpensesComponent implements OnInit {
 			'',
 			[Validators.required]
 		),
-		categorie: new FormControl(
+		category: new FormControl(
 			'',
 			[Validators.required]
 		),

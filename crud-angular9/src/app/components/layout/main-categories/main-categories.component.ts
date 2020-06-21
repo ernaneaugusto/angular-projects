@@ -10,13 +10,12 @@ import { Utils } from 'src/app/shared/utils';
 export class MainCategoriesComponent implements OnInit {
 
 	public formCategories: FormGroup = new FormGroup({
-		categorie: new FormControl(
+		category: new FormControl(
 			'',
 			[Validators.required, Validators.minLength(2)]
 		),
 		description: new FormControl(
-			'',
-			[Validators.required, Validators.minLength(2)]
+			''
 		),
 	});
 
