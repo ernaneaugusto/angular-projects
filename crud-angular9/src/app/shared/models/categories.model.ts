@@ -1,17 +1,18 @@
+import { Utils } from './../utils';
 class CategoriesInterface {
     id: string;
-    name: string;
+    category: string;
     description?: string;
 }
 
 export class CategoriesModel {
-    id: string;
-    name: string;
+    id?: string;
+    category: string;
     description?: string;
 
     constructor(data: CategoriesInterface) {
         this.id = data.id;
-        this.name = data.name;
-        this.description = data.description ? data.description : '** Sem decrição **';
+        this.category = Utils.FirstCharacterToUppercase(data.category);
+        this.description = data.description ? Utils.FirstCharacterToUppercase(data.description) : '** Sem decrição **';
     }
 }

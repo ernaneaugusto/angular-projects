@@ -47,8 +47,13 @@ function functionSortArrayObjects(arrayObjects: Array<any>, orderBy: string = 'c
     });
 }
 
+function functionFirstCharacterToUppercase(data: string) {
+    return data.charAt(0).toUpperCase() + data.slice(1);
+}
+
 export class Utils {
     static markFormFieldsAsTouched = functionMarkFormFieldsAsTouched;
     static createModel = functionCreateModel;
     static sortArrayObjects = functionSortArrayObjects;
+    static FirstCharacterToUppercase = functionFirstCharacterToUppercase;
 }
