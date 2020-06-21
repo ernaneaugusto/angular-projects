@@ -39,10 +39,10 @@ function functionCreateModel(data: Array<any>, model: string) {
  * @param arrayObjects Array de objetos a serem ordenados
  * @param orderBy Parametro OPCIONAL. Nome da chave do array a ser usada como base na ordenacao, por padrao recebe o valor de name
  */
-function functionSortArrayObjects(arrayObjects: Array<any>, orderBy = 'name') {
+function functionSortArrayObjects(arrayObjects: Array<any>, orderBy: string = 'category') {
     return arrayObjects.sort((desc1, desc2) => {
-        if (desc1.orderBy < desc2.orderBy) return -1;
-        if (desc1.orderBy > desc2.orderBy) return 1;
+        if (desc1[orderBy] < desc2[orderBy]) return -1;
+        if (desc1[orderBy] > desc2[orderBy]) return 1;
         return 0;
     });
 }
