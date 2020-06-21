@@ -32,5 +32,9 @@ export class CategoriesService {
     public updateCategories(data): Observable<any> {
         return this.http.put<any>(`${URL.localhost}/${URL.categories}`, data);
     }
+    
+    public deleteCategories(id: number): Observable<any> {
+        return this.http.delete<any>(`${URL.localhost}/${URL.categories}/${id}`);
+    }
 
 }
