@@ -6,21 +6,31 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form>
+                        <form [formGroup]="formCategories" (ngSubmit)="submitFormCategories()">
                             <div class="row">
                                 <div class="col-12 col-lg-6 text-left">
                                     <label for="">Nome da categoria</label>
-                                    <input autofocus type="text" id="defaultContactFormName" class="form-control mb-4"
-                                        placeholder="Alimentação, Cuidados pessoais, Outros...">
+                                    <input autofocus type="text" id="defaultContactFormName" class="form-control mb-1"
+                                        placeholder="Alimentação, Cuidados pessoais, Outros..." required
+                                        formControlName="categorie" name="categorie">
+                                    <span class="text-danger d-block"
+                                        *ngIf="formCategories.get('categorie').touched && formCategories.get('categorie').getError('required')">Campo
+                                        obrigatório.</span>
+                                    <span class="text-danger d-block"
+                                        *ngIf="formCategories.get('categorie').getError('minlength')">Preencha pelo
+                                        menos 2 caractes.</span>
                                 </div>
                                 <div class="col-12 col-lg-6 text-left">
                                     <label for="">Descrição</label>
-                                    <input type="text" id="defaultContactFormName" class="form-control mb-4"
-                                        placeholder="Gastos com alimentação, com vestuário, com a casa...">
+                                    <input type="text" id="defaultContactFormName" class="form-control mb-1"
+                                        placeholder="Gastos com alimentação, com vestuário, com a casa..."
+                                        formControlName="description" name="description">
                                 </div>
-                                <div class="col-12">
-                                    <button class="btn btn-info" type="submit"><i class="fa fa-check"></i>
-                                        Salvar</button>
+                                <div class="col-12 mt-4">
+                                    <button class="btn btn-info" type="submit" [disabled]="formCategories.invalid">
+                                        <i class="fa fa-check"></i>
+                                        Salvar
+                                    </button>
                                 </div>
                             </div>
                         </form>
@@ -50,10 +60,8 @@
                                         <td>Cuidados pessoais</td>
                                         <td>Higiene e beleza</td>
                                         <td>
-                                            <a class="btn btn-default btn-sm" href="#"><i
-                                                    class="fas fa-pencil"></i></a>
-                                            <a class="btn btn-danger btn-sm" href="#"><i
-                                                    class="fas fa-trash"></i></a>
+                                            <a class="btn btn-default btn-sm" href="#"><i class="fas fa-pencil"></i></a>
+                                            <a class="btn btn-danger btn-sm" href="#"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
