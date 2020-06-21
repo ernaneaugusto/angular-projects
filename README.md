@@ -1,2 +1,2 @@
 # Importante
-Os projetos estão dividos em branchs, ao baixar o projeto execute o comando `git checkout nomeDaBranch` para alterar para uma branch específica.
+Para rodar o backend da aplicação execute o comando `npm run start-backend` em um outro terminal e deixe-o sempre aberto
