@@ -1,39 +1,32 @@
 {
-    "categories": [
-        {
-            "id": 1,
-            "name": "Alimentos"
-        },
-        {
-            "id": 2,
-            "name": "Mercado",
-            "description": "Descrição categoria Mercado"
-        },
-        {
-            "id": 3,
-            "name": "Tecnologia",
-            "description": "Descrição categoria Mercado"
-        },
-        {
-            "id": 4,
-            "name": "Higiene",
-            "description": ""
-        }
-    ],
-    "expenses": [
-        {
-            "id": 1,
-            "description": "Ifood",
-            "valor": 10.00,
-            "category": "Comida",
-            "tag": ""
-        },
-        {
-            "id": 2,
-            "description": "Blusa",
-            "valor": 2500.00,
-            "category": "Vestuário",
-            "tag": "Vestuário"
-        }
-    ]
+  "categories": [
+    {
+      "id": 1,
+      "category": "Alimentos"
+    },
+    {
+      "id": 2,
+      "category": "Mercado",
+      "description": "Descrição categoria Mercado"
+    },
+    {
+      "id": 3,
+      "category": "Tecnologia",
+      "description": "Descrição categoria Mercado"
+    },
+    {
+      "id": 4,
+      "category": "Higiene",
+      "description": ""
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1,
+      "description": "Ifood",
+      "valor": 10,
+      "category": "Comida",
+      "tag": ""
+    }
+  ]
 }

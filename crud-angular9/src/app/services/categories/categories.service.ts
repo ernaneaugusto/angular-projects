@@ -14,4 +14,8 @@ export class CategoriesService {
   public getCategories(): Observable<CategoriesModel[]> {
     return this.http.get<CategoriesModel[]>(`${URL.localhost}/${URL.categories}`);
   }
+
+  public setCategories(data): Observable<any> {
+    return this.http.post<any>(`${URL.localhost}/${URL.categories}`, data);
+  }
 }

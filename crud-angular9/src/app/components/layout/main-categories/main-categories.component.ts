@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -16,7 +16,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 
 	private categoriesModel: Array<CategoriesModel>;
 	private categoriesObs$: Subscription;
-	
+	private categoriesTableUpdated: EventEmitter<any> = new EventEmitter<any>();
+
 	public hasCategoriesError: boolean = false;
 	public categoriesAmount: number;
 	// dados para validacao do form de categorias
@@ -45,6 +46,13 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 		}
 	}
 
+	// atualiza o total e listagem de categorias com ordenacao
+	private updateCategoriesEmit() {
+		this.categoriesAmount++;
+		this.categoriesModel = Utils.sortArrayObjects(this.categories, 'category');
+		this.categoriesTableUpdated.emit([this.categories, this.categoriesAmount]);
+	}
+
 	// retorna a variavel private de categoriesModel para que ela nao seja acessivel fora da classe
 	get categories() {
 		return this.categoriesModel;
@@ -53,7 +61,8 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 	// valida e submete os dados do form para cadastro no 'banco de dados'
 	public submitFormCategories(): void {
 		if (this.formCategories.valid) {
-			console.log("## Valido", this.formCategories.controls);
+			const data = new CategoriesModel(this.formCategories.value);
+			this.setCategoriesApi(data);
 		} else {
 			console.log("## Form invalido");
 			Utils.markFormFieldsAsTouched(this.formCategories);
@@ -74,11 +83,27 @@ export class MainCategoriesComponent implements OnInit, OnDestroy {
 				const arrayCategories = Utils.createModel(category, 'categories');
 
 				// ordena um array de objetos do tipo CategoriesModel
-				this.categoriesModel = Utils.sortArrayObjects(arrayCategories);
+				this.categoriesModel = Utils.sortArrayObjects(arrayCategories, 'category');
 			},
 				(error: HttpErrorResponse) => {
 					console.log("### erro", error);
 					this.hasCategoriesError = true;
+				});
+	}
+
+	private setCategoriesApi(formData): void {
+		this.service
+			.setCategories(formData)
+			.pipe(
+				take(1) // aguarda o retorno de da API apenas 1x e encerra o Observable
+			)
+			.subscribe((cat) => {
+				console.log("### Dados cadastrados com sucesso!", cat);
+				this.categories.push(cat);
+				this.updateCategoriesEmit();
+			},
+				(error) => {
+					console.log("### erro", error);
 				});
 	}
 
