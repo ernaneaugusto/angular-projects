@@ -9,8 +9,8 @@
                         <form [formGroup]="formCategories" (ngSubmit)="submitFormCategories()">
                             <div class="row">
                                 <div class="col-12 col-lg-6 text-left">
-                                    <label for="">Nome da categoria</label>
-                                    <input autofocus type="text" id="defaultContactFormName" class="form-control mb-1"
+                                    <label for="categorie">Nome da categoria</label>
+                                    <input type="text" id="categorie" class="form-control mb-1"
                                         placeholder="Alimentação, Cuidados pessoais, Outros..." required
                                         formControlName="categorie" name="categorie">
                                     <span class="text-danger d-block"
@@ -21,8 +21,8 @@
                                         menos 2 caractes.</span>
                                 </div>
                                 <div class="col-12 col-lg-6 text-left">
-                                    <label for="">Descrição</label>
-                                    <input type="text" id="defaultContactFormName" class="form-control mb-1"
+                                    <label for="description">Descrição</label>
+                                    <input type="text" id="description" class="form-control mb-1"
                                         placeholder="Gastos com alimentação, com vestuário, com a casa..."
                                         formControlName="description" name="description">
                                 </div>
