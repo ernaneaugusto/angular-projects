@@ -8,7 +8,7 @@
                     <div class="card-body">
                         <form [formGroup]="formCategories" (ngSubmit)="submitFormCategories()">
                             <div class="row">
-                                <div class="col-12 col-lg-6 text-left">
+                                <div class="col-12 mt-3 col-lg-6 text-left">
                                     <label for="categorie">Nome da categoria</label>
                                     <input type="text" id="categorie" class="form-control mb-1"
                                         placeholder="Alimentação, Cuidados pessoais, Outros..." required
@@ -20,7 +20,7 @@
                                         *ngIf="formCategories.get('categorie').getError('minlength')">Preencha pelo
                                         menos 2 caractes.</span>
                                 </div>
-                                <div class="col-12 col-lg-6 text-left">
+                                <div class="col-12 mt-3 col-lg-6 text-left">
                                     <label for="description">Descrição</label>
                                     <input type="text" id="description" class="form-control mb-1"
                                         placeholder="Gastos com alimentação, com vestuário, com a casa..."

@@ -15,6 +15,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { MainHomeComponent } from './components/layout/main-home/main-home.component';
 import { MainExpensesComponent } from './components/layout/main-expenses/main-expenses.component';
 import { MainCategoriesComponent } from './components/layout/main-categories/main-categories.component';
+import { FormExpensesComponent } from './shared/components/form-expenses/form-expenses.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MainCategoriesComponent } from './components/layout/main-categories/mai
     FooterComponent,
     MainHomeComponent,
     MainExpensesComponent,
-    MainCategoriesComponent
+    MainCategoriesComponent,
+    FormExpensesComponent
   ],
   imports: [
     BrowserModule,

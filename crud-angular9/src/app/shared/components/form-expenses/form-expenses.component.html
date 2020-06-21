@@ -1,0 +1,73 @@
+<form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()">
+    <div class="row">
+        <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
+            <label for="amount">Valor da compra</label>
+            <input autofocus type="number" id="amount" name="amount" formControlName="amount" class="form-control mb-1"
+                placeholder="0,00">
+            <span class="text-danger"
+                *ngIf="formExpenses.get('amount').getError('required') && formExpenses.get('amount').touched">Campo
+                obrigatório</span>
+            <span class="text-success d-block" *ngIf="!formExpenses.get('amount').getError('required')">Ok</span>
+        </div>
+        <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal, 'col-lg-6': isModal}">
+            <label for="description">Descrição do gasto</label>
+            <input type="text" id="description" name="description" formControlName="description"
+                class="form-control mb-1" placeholder="Internet, Calça, Perfume..." name="description"
+                formControlName="description">
+            <span class="text-danger d-block"
+                *ngIf="formExpenses.get('description').getError('required') && formExpenses.get('description').touched">Campo
+                obrigatório</span>
+            <span class="text-danger d-block"
+                *ngIf="formExpenses.get('description').getError('minlength') && formExpenses.get('description').touched">Preencha
+                pelo
+                menos 2 caractes.</span>
+            <span class="text-success d-block"
+                *ngIf="!formExpenses.get('description').getError('required') && !formExpenses.get('description').getError('minlength')">Ok</span>
+
+        </div>
+        <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal, 'col-lg-6': isModal}">
+            <label for="purchaseDate">Data da compra</label>
+            <input type="date" id="purchaseDate" name="purchaseDate" formControlName="purchaseDate"
+                class="form-control mb-1" placeholder="Data da compra">
+            <span class="text-danger d-block"
+                *ngIf="formExpenses.get('purchaseDate').getError('required') && formExpenses.get('purchaseDate').touched">Campo
+                obrigatório</span>
+            <span class="text-success d-block" *ngIf="!formExpenses.get('purchaseDate').getError('required')">Ok</span>
+        </div>
+        <div class="col-12 col-lg-6 text-left mt-3">
+            <label for="categorie">Categoria</label>
+            <select class="browser-default custom-select mb-1" id="categorie" name="categorie"
+                formControlName="categorie">
+                <option value="" selected>-- Selecione a categoria</option>
+                <option value="1">Categoria 1</option>
+                <option value="2">Categoria 2</option>
+                <option value="3">Categoria 3</option>
+            </select>
+            <span class="text-danger d-block"
+                *ngIf="formExpenses.get('categorie').getError('required') && formExpenses.get('categorie').touched">Campo
+                obrigatório</span>
+            <span class="text-success d-block" *ngIf="!formExpenses.get('categorie').getError('required')">Ok</span>
+        </div>
+        <div class="col-12 col-lg-6 text-left mt-3">
+            <label for="tag">Tag</label>
+            <input type="text" id="tag" name="tag" formControlName="tag" class="form-control mb-1"
+                placeholder="Mercado, Ifood, Higiene...">
+            <span class="text-success d-block" *ngIf="formExpenses.get('tag').touched">Ok</span>
+        </div>
+
+        <div *ngIf="!isModal" class="col-12 mt-3">
+            <button class="btn btn-info" type="submit"><i class="fa fa-check"></i>
+                Salvar</button>
+        </div>
+
+        <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
+            <button class="btn btn-info btn-block" type="submit"><i class="fa fa-check"></i>
+                Salvar</button>
+        </div>
+        <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
+            <button class="btn btn-danger btn-block" type="button" data-dismiss="modal" aria-label="Close"><i
+                    class="fas fa-times"></i>
+                Cancelar</button>
+        </div>
+    </div>
+</form>

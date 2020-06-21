@@ -48,51 +48,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form [formGroup]>
-                                        <div class="row">
-                                            <div class="col-12 col-lg-12 text-left">
-                                                <label for="">Valor da compra</label>
-                                                <input autofocus type="nymber" id="defaultContactFormName"
-                                                    class="form-control mb-4" placeholder="0,00">
-                                            </div>
-                                            <div class="col-12 col-lg-6 text-left">
-                                                <label for="">Descrição do gasto</label>
-                                                <input type="text" id="defaultContactFormName"
-                                                    class="form-control mb-4"
-                                                    placeholder="Internet, Calça, Perfume...">
-                                            </div>
-                                            <div class="col-12 col-lg-6 text-left">
-                                                <label for="">Data da compra</label>
-                                                <input type="date" id="defaultContactFormName"
-                                                    class="form-control mb-4" placeholder="Data da compra">
-                                            </div>
-                                            <div class="col-12 col-lg-6 text-left">
-                                                <label for="">Categoria</label>
-                                                <select class="browser-default custom-select mb-4">
-                                                    <option value="1" selected>Categoria 1</option>
-                                                    <option value="2">Categoria 2</option>
-                                                    <option value="3">Categoria 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-12 col-lg-6 text-left">
-                                                <label for="">Tag</label>
-                                                <input type="text" id="defaultContactFormName"
-                                                    class="form-control mb-4"
-                                                    placeholder="Mercado, Ifood, Higiene...">
-                                            </div>
-                                            <div class="col-6">
-                                                <button class="btn btn-info btn-block" type="submit"><i
-                                                        class="fa fa-check"></i>
-                                                    Salvar</button>
-                                            </div>
-                                            <div class="col-6">
-                                                <button class="btn btn-danger btn-block" type="button"
-                                                    data-dismiss="modal" aria-label="Close"><i
-                                                        class="fas fa-times"></i>
-                                                    Cancelar</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                    <app-form-expenses [isModal]="true"></app-form-expenses>
                                 </div>
                             </div>
                         </div>
