@@ -39,6 +39,7 @@
                         <div *ngIf="hasCategoriesError" class="alert alert-danger my-4">Ocorreu um erro ao carregar as informações. Se está rodando o projeto local execute o comando <code class="tect-danger">npm run start-backend</code> para executar o backend do projeto.</div>
 
                         <div class="text-right" *ngIf="categoriesAmount !== 0 && !hasCategoriesError">
+                            <!-- @TODO: colocar efeito +1 quando cadastrar nova categoria -->
                             <p class="alert alert-info d-inline-block">Total de categorias: <span
                                     class="badge badge-primary py-1 px-2 badge-pill">{{ categoriesAmount }}</span></p>
                         </div>

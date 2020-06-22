@@ -10,7 +10,8 @@
                         <app-form-expenses (newExpenseEmitter)="updateTableExpenses($event)"></app-form-expenses>
 
                         <div class="text-right">
-                            <p class="alert alert-info d-inline-block">Total de compras: <span
+                            <!-- @TODO: colocar efeito +1 quando cadastrar novo gasto -->
+                            <p class="alert alert-info d-inline-block">Total de gastos: <span
                                     class="badge badge-primary py-1 px-2 badge-pill">{{ expensesAmount }}</span></p>
                         </div>
 

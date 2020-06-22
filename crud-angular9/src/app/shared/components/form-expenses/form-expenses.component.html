@@ -31,6 +31,7 @@
 
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal, 'col-lg-6': isModal}">
             <label for="purchaseDate">Data da compra</label>
+            <!-- @TODO: corrigir formato da data ao editar -->
             <input type="date" id="purchaseDate" name="purchaseDate" formControlName="purchaseDate"
                 class="form-control mb-1" placeholder="Data da compra">
             <span class="text-danger d-block"
