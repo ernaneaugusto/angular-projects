@@ -35,11 +35,13 @@ export class MainExpensesComponent implements OnInit, OnDestroy {
 		return this.expensesModel;
 	}
 
-	// private updateExpensesEmit() {
-	// 	this.expensesAmount++;
-	// 	this.expensesModel = Utils.sortArrayObjects(this.expenses, 'datePurchase');
-	// 	this.expensesTableUpdated.emit([this.expenses, this.expensesAmount]);
-	// }
+	// funcao que recebera o novo expense cadastrado pelo form-expenses
+	// e atualizara os campos desse componentes dependentes desse cadastro
+	public updateTableExpenses(eventNewExpense: ExpensesModel) {
+		this.expensesAmount++;
+		this.expensesModel.push(eventNewExpense);
+		this.expensesModel = Utils.sortArrayObjects(this.expenses, 'datePurchase');
+	}
 
 	private getExpensesApi(): void {
 		this.service

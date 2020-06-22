@@ -3,7 +3,7 @@ import { take } from 'rxjs/operators';
 import { CategoriesService } from './../../../services/categories/categories.service';
 import { Utils } from './../../utils';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ExpensesService } from 'src/app/services/expenses/expenses.service';
 import { ExpensesModel } from '../../models/expenses.model';
 import { Subscription } from 'rxjs';
@@ -21,6 +21,9 @@ export class FormExpensesComponent implements OnInit {
 	private categoriesModel: Array<CategoriesModel>;
 	private getCategoriesObs$: Subscription;
 	private setExpensesObs$: Subscription;
+	
+	// propriedade que sera emitida quando um novo expense for cadastrado
+	@Output() newExpenseEmitter: EventEmitter<any> = new EventEmitter();
 
 	public formExpenses: FormGroup = new FormGroup({
 		amount: new FormControl(
@@ -53,7 +56,7 @@ export class FormExpensesComponent implements OnInit {
 		this.getCategoriesApi();
 	}
 
-	ngOnDestry(): void {
+	ngOnDestroy(): void {
 		if (
 			this.getCategoriesObs$ ||
 			this.setExpensesObs$ !== undefined
@@ -66,12 +69,19 @@ export class FormExpensesComponent implements OnInit {
 		return this.categoriesModel;
 	}
 
+	// funcao que emitira um evento quando novo expense for cadastrado
+	public setExpenseEmitter(newExpense: ExpensesModel) {
+		this.newExpenseEmitter.emit(newExpense);
+	}
+
 	private setExpensesApi(): void {
 		const data = new ExpensesModel(this.formExpenses.value);
 		this.setExpensesObs$ = this.serviceExpenses
 			.setExpenses(data)
 			.subscribe(() => {
-				console.log("## formData", data);
+				// emite o novo expense cadastrado
+				this.setExpenseEmitter(data);
+				console.log("## Dados cadastrados com sucesso!", data);
 			}, (error: HttpErrorResponse) => {
 				console.log("## error", error);
 			});
@@ -89,7 +99,7 @@ export class FormExpensesComponent implements OnInit {
 
 				// ordena um array de objetos do tipo CategoriesModel
 				this.categoriesModel = Utils.sortArrayObjects(arrayCategories, 'category');
-			})
+			}, (error: HttpErrorResponse) => console.log("## error", error));
 	}
 
 	public submitFormExpenses() {

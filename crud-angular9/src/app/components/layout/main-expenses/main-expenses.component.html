@@ -6,7 +6,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <app-form-expenses></app-form-expenses>
+                        <!-- atraves do evento emitido por newExpenseEmitter executamos a funcao updateTableExpenses($event) da classe pai -->
+                        <app-form-expenses (newExpenseEmitter)="updateTableExpenses($event)"></app-form-expenses>
 
                         <div class="text-right">
                             <p class="alert alert-info d-inline-block">Total de compras: <span
