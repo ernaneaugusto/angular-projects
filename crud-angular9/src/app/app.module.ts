@@ -1,8 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+// registrando formato de data padrao BR. Utilizar campoData | date: 'dd/MM/yyyy'
+import { registerLocaleData } from '@angular/common';
+import ptBr from '@angular/common/locales/pt';
+registerLocaleData(ptBr);
 
 import { AppComponent } from './app.component';
 import { ROUTES } from './app.routes';
@@ -23,6 +27,8 @@ import { CategoriesEditComponent } from './pages/categories-edit/categories-edit
 import { MainCategoriesEditComponent } from './components/layout/main-categories-edit/main-categories-edit.component';
 import { MainCategoriesDeleteComponent } from './components/layout/main-categories-delete/main-categories-delete.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
+import { ExpensesService } from './services/expenses/expenses.service';
+import { LoaderComponent } from './shared/components/loader.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,8 @@ import { CategoriesDeleteComponent } from './pages/categories-delete/categories-
     CategoriesEditComponent,
     MainCategoriesEditComponent,
     MainCategoriesDeleteComponent,
-    CategoriesDeleteComponent
+    CategoriesDeleteComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,12 @@ import { CategoriesDeleteComponent } from './pages/categories-delete/categories-
     RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    CategoriesService
+    { // configuracoes para campos padrao BR
+      provide: LOCALE_ID,
+      useValue: "pt-BR"
+    },
+    CategoriesService,
+    ExpensesService
   ],
   bootstrap: [AppComponent]
 })

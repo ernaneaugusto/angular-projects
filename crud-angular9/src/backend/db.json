@@ -28,11 +28,20 @@
   ],
   "expenses": [
     {
-      "id": 1,
-      "description": "Ifood",
-      "valor": 10,
-      "category": "Comida",
-      "tag": ""
+      "description": "Internet",
+      "purchaseDate": "2020-01-09T00:00:00.000Z",
+      "category": "Tecnologia",
+      "amount": 99.9,
+      "tag": "Internet",
+      "id": 1
+    },
+    {
+      "description": "Celular",
+      "purchaseDate": "2020-04-03T00:00:00.000Z",
+      "category": "Tecnologia",
+      "amount": 999.9,
+      "tag": "Celular",
+      "id": 2
     }
   ]
 }

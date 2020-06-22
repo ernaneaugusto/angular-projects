@@ -6,7 +6,7 @@ class CategoriesInterface {
 }
 
 export class CategoriesModel {
-    id?: string;
+    id: string;
     category: string;
     description?: string;
 

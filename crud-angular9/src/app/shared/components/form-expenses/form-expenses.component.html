@@ -1,3 +1,4 @@
+<!-- <form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()" *ngIf="categories.length > 0"> -->
 <form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()">
     <div class="row">
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
@@ -38,10 +39,9 @@
             <label for="category">Categoria</label>
             <select class="browser-default custom-select mb-1" id="category" name="category"
                 formControlName="category">
-                <option value="" selected>-- Selecione a categoria</option>
-                <option value="1">Categoria 1</option>
-                <option value="2">Categoria 2</option>
-                <option value="3">Categoria 3</option>
+                <option value="" selected *ngIf="!categories">-- Carregando...</option>
+                <option value="" selected *ngIf="categories">-- Selecione a categoria</option>
+                <option *ngFor="let categorie of categories" [value]="categorie.category">{{ categorie.category }}</option>
             </select>
             <span class="text-danger d-block"
                 *ngIf="formExpenses.get('category').getError('required') && formExpenses.get('category').touched">Campo

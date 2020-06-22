@@ -1,3 +1,4 @@
+import { ExpensesModel } from './models/expenses.model';
 import { CategoriesModel } from './models/categories.model';
 import { URL } from './../core/urls';
 import { FormGroup } from '@angular/forms';
@@ -28,6 +29,11 @@ function functionCreateModel(data: Array<any>, model: string) {
                 arrayObjects.push(model);
             });
             break;
+        } case URL.expenses: {
+            data.forEach(item => {
+                let model = new ExpensesModel(item);
+                arrayObjects.push(model);
+            })
         }
     }
 
@@ -47,6 +53,10 @@ function functionSortArrayObjects(arrayObjects: Array<any>, orderBy: string = 'c
     });
 }
 
+/**
+ * 
+ * @param data Tipo string: transforma o primeiro caractere de uma string em maiusculo
+ */
 function functionFirstCharacterToUppercase(data: string) {
     return data.charAt(0).toUpperCase() + data.slice(1);
 }
