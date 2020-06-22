@@ -29,6 +29,8 @@ import { MainCategoriesDeleteComponent } from './components/layout/main-categori
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
 import { ExpensesService } from './services/expenses/expenses.service';
 import { LoaderComponent } from './shared/components/loader.component';
+import { TableExpensesComponent } from './components/table-expenses/table-expenses.component';
+import { TableCategoriesComponent } from './components/table-categories/table-categories.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { LoaderComponent } from './shared/components/loader.component';
     MainCategoriesEditComponent,
     MainCategoriesDeleteComponent,
     CategoriesDeleteComponent,
-    LoaderComponent
+    LoaderComponent,
+    TableExpensesComponent,
+    TableCategoriesComponent
   ],
   imports: [
     BrowserModule,

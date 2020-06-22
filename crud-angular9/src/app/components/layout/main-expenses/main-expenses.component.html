@@ -14,33 +14,7 @@
                                     class="badge badge-primary py-1 px-2 badge-pill">{{ expensesAmount }}</span></p>
                         </div>
 
-                        <div class="table-responsive" *ngIf="expenses">
-                            <table class="table table-striped mt-3">
-                                <thead>
-                                    <tr>
-                                        <th>Data da compra</th>
-                                        <th>Descrição</th>
-                                        <th>Valor</th>
-                                        <th>Categoria</th>
-                                        <th>Tag</th>
-                                        <th>Ações</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let expense of expenses">
-                                        <td>{{ expense.purchaseDate | date: 'dd/MM/yyyy' }}</td>
-                                        <td>{{ expense.description }}</td>
-                                        <td>{{ expense.amount | currency: 'BRL': true }}</td>
-                                        <td>{{ expense.category }}</td>
-                                        <td>{{ expense.tag }}</td>
-                                        <td>
-                                            <a class="btn btn-default btn-sm mr-2"><i class="fas fa-edit mr-0"></i></a>
-                                            <a class="btn btn-danger btn-sm mr-2"><i class="fas fa-trash mr-0"></i></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <app-table-expenses [data]="expenses"></app-table-expenses>
                     </div>
                 </div>
             </div>
