@@ -1,6 +1,7 @@
 <!-- <form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()" *ngIf="categories.length > 0"> -->
 <form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()">
     <div class="row">
+
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
             <label for="amount">Valor da compra</label>
             <input autofocus type="number" id="amount" name="amount" formControlName="amount" class="form-control mb-1"
@@ -8,8 +9,10 @@
             <span class="text-danger"
                 *ngIf="formExpenses.get('amount').getError('required') && formExpenses.get('amount').touched">Campo
                 obrigatório</span>
-            <span class="text-success d-block" *ngIf="!formExpenses.get('amount').getError('required')">Ok</span>
+            <span class="text-success d-block"
+                *ngIf="!formExpenses.get('amount').getError('required') && formExpenses.get('amount').dirty">Ok</span>
         </div>
+
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal, 'col-lg-6': isModal}">
             <label for="description">Descrição do gasto</label>
             <input type="text" id="description" name="description" formControlName="description"
@@ -23,9 +26,9 @@
                 pelo
                 menos 2 caractes.</span>
             <span class="text-success d-block"
-                *ngIf="!formExpenses.get('description').getError('required') && !formExpenses.get('description').getError('minlength')">Ok</span>
-
+                *ngIf="!formExpenses.get('description').getError('required') && !formExpenses.get('description').getError('minlength') && formExpenses.get('description').dirty">Ok</span>
         </div>
+
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal, 'col-lg-6': isModal}">
             <label for="purchaseDate">Data da compra</label>
             <input type="date" id="purchaseDate" name="purchaseDate" formControlName="purchaseDate"
@@ -33,26 +36,32 @@
             <span class="text-danger d-block"
                 *ngIf="formExpenses.get('purchaseDate').getError('required') && formExpenses.get('purchaseDate').touched">Campo
                 obrigatório</span>
-            <span class="text-success d-block" *ngIf="!formExpenses.get('purchaseDate').getError('required')">Ok</span>
+            <span class="text-success d-block"
+                *ngIf="!formExpenses.get('purchaseDate').getError('required') && formExpenses.get('purchaseDate').dirty">Ok</span>
         </div>
+
         <div class="col-12 col-lg-6 text-left mt-3">
             <label for="category">Categoria</label>
-            <select class="browser-default custom-select mb-1" id="category" name="category"
-                formControlName="category">
+            <select class="browser-default custom-select mb-1" id="category" name="category" formControlName="category">
                 <option value="" selected *ngIf="!categories">-- Carregando...</option>
-                <option value="" selected *ngIf="categories">-- Selecione a categoria</option>
-                <option *ngFor="let categorie of categories" [value]="categorie.category">{{ categorie.category }}</option>
+                <option value="" [selected]="!isFormEdit" *ngIf="categories || isFormEdit">-- Selecione a categoria
+                </option>
+                <option *ngFor="let categorie of categories" [value]="categorie.category">{{ categorie.category }}
+                </option>
             </select>
             <span class="text-danger d-block"
                 *ngIf="formExpenses.get('category').getError('required') && formExpenses.get('category').touched">Campo
                 obrigatório</span>
-            <span class="text-success d-block" *ngIf="!formExpenses.get('category').getError('required')">Ok</span>
+            <span class="text-success d-block"
+                *ngIf="!formExpenses.get('category').getError('required') && formExpenses.get('category').dirty">Ok</span>
         </div>
+
         <div class="col-12 col-lg-6 text-left mt-3">
             <label for="tag">Tag</label>
             <input type="text" id="tag" name="tag" formControlName="tag" class="form-control mb-1"
                 placeholder="Mercado, Ifood, Higiene...">
-            <span class="text-success d-block" *ngIf="formExpenses.get('tag').touched">Ok</span>
+            <span class="text-success d-block"
+                *ngIf="formExpenses.get('tag').touched && formExpenses.get('category').dirty">Ok</span>
         </div>
 
         <div *ngIf="!isModal" class="col-12 mt-3">
@@ -61,7 +70,8 @@
         </div>
 
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
-            <button [disabled]="formExpenses.invalid" class="btn btn-info btn-block" type="submit"><i class="fa fa-check"></i>
+            <button [disabled]="formExpenses.invalid" class="btn btn-info btn-block" type="submit"><i
+                    class="fa fa-check"></i>
                 Salvar</button>
         </div>
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
@@ -69,5 +79,6 @@
                     class="fas fa-times"></i>
                 Cancelar</button>
         </div>
+        
     </div>
 </form>

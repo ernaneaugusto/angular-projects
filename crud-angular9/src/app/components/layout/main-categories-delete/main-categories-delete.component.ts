@@ -20,11 +20,10 @@ export class MainCategoriesDeleteComponent implements OnInit, OnDestroy {
     private getCategoriesByIdObs$: Subscription;
     private setCategoryByIdObs$: Subscription;
 
-    private categoryId: number;
-
     public isAlwaysReadonly: boolean = true;
     public hasCategoryError: boolean = false;
     public hasCategorySuccess: boolean = false;
+
     // dados para validacao do form de edicao de categoria
     public formCategoriesDelete: FormGroup = new FormGroup({
         id: new FormControl(''),
@@ -46,12 +45,11 @@ export class MainCategoriesDeleteComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         // pega o id da rota da aplicacao para usar na consulta dos dados para edicao
-        this.activatedRouteObs$ = this.activatedRoute.params.subscribe(id => {
-            this.categoryId = this.activatedRoute.snapshot.params['id'];
-            console.log("##snap", this.categoryId);
+        this.activatedRouteObs$ = this.activatedRoute.params.subscribe(paramId => {
+            const categoryId = parseInt(paramId.id);
+            // busca a categoria especifica da API
+            this.getCategoryByIdApi(categoryId);
         });
-        // busca a categoria especifica da API
-        this.getCategoryByIdApi(this.categoryId);
     }
 
     ngOnDestroy(): void {

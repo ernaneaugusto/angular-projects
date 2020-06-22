@@ -31,6 +31,8 @@ import { ExpensesService } from './services/expenses/expenses.service';
 import { LoaderComponent } from './shared/components/loader.component';
 import { TableExpensesComponent } from './components/table-expenses/table-expenses.component';
 import { TableCategoriesComponent } from './components/table-categories/table-categories.component';
+import { ExpensesEditComponent } from './pages/expenses-edit/expenses-edit.component';
+import { MainExpensesEditComponent } from './components/layout/main-expenses-edit/main-expenses-edit.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +54,9 @@ import { TableCategoriesComponent } from './components/table-categories/table-ca
     CategoriesDeleteComponent,
     LoaderComponent,
     TableExpensesComponent,
-    TableCategoriesComponent
+    TableCategoriesComponent,
+    ExpensesEditComponent,
+    MainExpensesEditComponent
   ],
   imports: [
     BrowserModule,

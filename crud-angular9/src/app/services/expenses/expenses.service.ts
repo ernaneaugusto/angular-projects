@@ -14,6 +14,10 @@ export class ExpensesService {
         return this.http.get<any>(`${URL.localhost}/${URL.expenses}`);
     }
     
+    public getExpensesById(id: number): Observable<any> {
+        return this.http.get<any>(`${URL.localhost}/${URL.expenses}/${id}`);
+    }
+    
     public setExpenses(formData): Observable<any> {
         return this.http.post<any>(`${URL.localhost}/${URL.expenses}`, formData);
     }
