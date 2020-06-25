@@ -34,9 +34,14 @@
                                 </div>
                             </div>
                         </form>
+                        
+                        <app-alert-message *ngIf="categoriesAmount === 0"
+                            [data]="{message: 'Você ainda não tem nenhuma \<strong\>Categoria\</strong\> cadastrada.', color: 'info'}">
+                        </app-alert-message>
 
-                        <div *ngIf="categoriesAmount === 0" class="alert alert-info my-4">Você ainda não tem nenhuma <strong>Categoria</strong> cadastrada.</div>
-                        <div *ngIf="hasCategoriesError" class="alert alert-danger my-4">Ocorreu um erro ao carregar as informações. Se está rodando o projeto local execute o comando <code class="tect-danger">npm run start-backend</code> para executar o backend do projeto.</div>
+                        <app-alert-message *ngIf="hasCategoriesError"
+                            [data]="{message: 'Ocorreu um erro ao carregar as informações. Se está rodando o projeto local execute o comando \'npm run start-backend\' para executar o backend do projeto.', color: 'warning'}">
+                        </app-alert-message>
 
                         <div class="text-right" *ngIf="categoriesAmount !== 0 && !hasCategoriesError">
                             <!-- @TODO: colocar efeito +1 quando cadastrar nova categoria -->

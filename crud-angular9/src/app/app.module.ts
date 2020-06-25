@@ -33,6 +33,7 @@ import { TableExpensesComponent } from './components/table-expenses/table-expens
 import { TableCategoriesComponent } from './components/table-categories/table-categories.component';
 import { ExpensesEditComponent } from './pages/expenses-edit/expenses-edit.component';
 import { MainExpensesEditComponent } from './components/layout/main-expenses-edit/main-expenses-edit.component';
+import { AlertMessageComponent } from './shared/components/alert-message/alert-message.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MainExpensesEditComponent } from './components/layout/main-expenses-edi
     TableExpensesComponent,
     TableCategoriesComponent,
     ExpensesEditComponent,
-    MainExpensesEditComponent
+    MainExpensesEditComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,
