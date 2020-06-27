@@ -43,11 +43,10 @@
                                 </div>
                             </div>
                         </form>
-
-                        <div *ngIf="hasCategoryError" class="alert alert-danger my-4">Ocorreu um erro ao carregar as
-                            informações. Se está rodando o projeto local execute o comando <code
-                                class="text-danger">npm run start-backend</code> para executar o backend do projeto.
-                        </div>
+                        
+                        <app-alert-message *ngIf="hasCategoryError"
+                            [data]="{message: 'Ocorreu um erro ao carregar as informações. Se está rodando o projeto local execute o comando \'npm run start-backend\' para executar o backend do projeto.', color: 'warning'}">
+                        </app-alert-message>
                     </div>
                 </div>
             </div>
