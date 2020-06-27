@@ -24,7 +24,6 @@ import { FormExpensesComponent } from './shared/components/form-expenses/form-ex
 import { CategoriesService } from './services/categories/categories.service';
 import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
 import { MainCategoriesEditComponent } from './components/layout/main-categories-edit/main-categories-edit.component';
-import { MainCategoriesDeleteComponent } from './components/layout/main-categories-delete/main-categories-delete.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
 import { ExpensesService } from './services/expenses/expenses.service';
 import { LoaderComponent } from './shared/components/loader.component';
@@ -49,7 +48,6 @@ import { AlertMessageComponent } from './shared/components/alert-message/alert-m
     FormExpensesComponent,
     CategoriesEditComponent,
     MainCategoriesEditComponent,
-    MainCategoriesDeleteComponent,
     CategoriesDeleteComponent,
     LoaderComponent,
     TableExpensesComponent,
