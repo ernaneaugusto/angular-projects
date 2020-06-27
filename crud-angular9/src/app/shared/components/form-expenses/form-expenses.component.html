@@ -4,7 +4,7 @@
 
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
             <label for="amount">Valor da compra</label>
-            <input autofocus type="number" id="amount" name="amount" formControlName="amount" class="form-control mb-1"
+            <input type="number" id="amount" name="amount" formControlName="amount" class="form-control mb-1"
                 placeholder="0,00">
             <span class="text-danger"
                 *ngIf="formExpenses.get('amount').getError('required') && formExpenses.get('amount').touched">Campo

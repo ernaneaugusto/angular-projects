@@ -1,1 +1,24 @@
-<app-main-expenses></app-main-expenses>
+<main class="pt-5 mx-lg-3">
+    <div class="container-fluid mt-5">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="row wow fadeIn">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- atraves do evento emitido por newExpenseEmitter executamos a funcao updateTableExpenses($event) da classe pai -->
+                        <app-form-expenses (newExpenseEmitter)="updateTableExpenses($event)"></app-form-expenses>
+
+                        <div class="text-right">
+                            <!-- @TODO: colocar efeito +1 quando cadastrar novo gasto -->
+                            <p class="alert alert-info d-inline-block">Total de gastos: <span
+                                    class="badge badge-primary py-1 px-2 badge-pill">{{ expensesAmount }}</span></p>
+                        </div>
+
+                        <app-table-expenses [data]="expenses"></app-table-expenses>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
