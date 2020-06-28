@@ -30,6 +30,7 @@ export class FormExpensesComponent implements OnInit {
 	private getExpensesObs$: Subscription;
 	private setExpensesObs$: Subscription;
 	private deleteExpenseObs$: Subscription;
+	private updateExpensesObs$: Subscription;
 	private activatedRouteObs$: Subscription;
 
 	// propriedade que sera emitida quando um novo expense for cadastrado
@@ -82,6 +83,7 @@ export class FormExpensesComponent implements OnInit {
 		if (this.setExpensesObs$ !== undefined) this.setExpensesObs$.unsubscribe();
 		if (this.getExpensesObs$ !== undefined) this.getExpensesObs$.unsubscribe();
 		if (this.deleteExpenseObs$ !== undefined) this.deleteExpenseObs$.unsubscribe();
+		if (this.updateExpensesObs$ !== undefined) this.updateExpensesObs$.unsubscribe();
 	}
 
 	get categories(): Array<CategoriesModel> {
@@ -93,11 +95,38 @@ export class FormExpensesComponent implements OnInit {
 		this.newExpenseEmitter.emit(newExpense);
 	}
 
+	public submitFormExpense() {
+		if (this.formExpenses.valid) {
+			console.log("## Valido", this.formExpenses.value);
+			this.setExpensesApi();
+		} else {
+			Utils.markFormFieldsAsTouched(this.formExpenses);
+			console.log("## INVALIDO");
+		}
+	}
+
+	public submitFormExpenseUpdate() {
+		if (this.formExpenses.valid) {
+			this.updateExpenseApi();
+		} else {
+			Utils.markFormFieldsAsTouched(this.formExpenses);
+			console.log("## INVALIDO");
+		}
+	}
+
+	public submitFormExpenseDelete() {
+		if (confirm("Quer realmente deletar este gasto?")) this.deleteExpenseApi();
+		else return;
+	}
+
 	private setExpensesApi(): void {
 		const formData = new ExpensesModel(this.formExpenses.value);
 
 		this.setExpensesObs$ = this.serviceExpenses
 			.setExpenses(formData)
+			.pipe(
+				take(1)
+			)
 			.subscribe(() => {
 				// emite o novo expense cadastrado
 				this.setExpenseEmitter(formData);
@@ -108,16 +137,39 @@ export class FormExpensesComponent implements OnInit {
 			});
 	}
 
-	private deleteExpensesApi() {
+	private updateExpenseApi(): void {
+		const formData = new ExpensesModel(this.formExpenses.value);
+		formData.id = this.idExpense.toString();
+
+		this.updateExpensesObs$ = this.serviceExpenses
+			.updateExpense(formData)
+			.pipe(
+				take(1)
+			)
+			.subscribe(() => {
+				alert('Dados atualizados com sucesso!');
+				console.log("## Dados atualizados com sucesso!", formData);
+				this.navigation.navigateToUrl(`/${URL.expenses}`);
+			}, (error: HttpErrorResponse) => {
+				console.log("## error", error);
+			});
+	}
+
+
+
+	private deleteExpenseApi() {
 		this.deleteExpenseObs$ = this.serviceExpenses
 			.deleteExpense(this.idExpense)
-			.subscribe(
-				() => {
-
-				},
+			.pipe(
+				take(1)
+			)
+			.subscribe(() => {
+				alert('Dados deletados com sucesso!');
+				console.log("## Dado deletado com sucesso!\nID do gasto: ", this.idExpense);
+				this.navigation.navigateToUrl(`/${URL.expenses}`);
+			},
 				(error: HttpErrorResponse) => {
 					console.log("## error", error);
-
 				}
 			);
 	}
@@ -158,24 +210,6 @@ export class FormExpensesComponent implements OnInit {
 				this.expensesModel = new ExpensesModel(expense);
 
 			}, (error: HttpErrorResponse) => console.log("## error", error));
-	}
-
-	public submitFormExpenses() {
-		if (this.formExpenses.valid && !this.isFormDelete) { // cadastra e edita as informacoes
-			console.log("## Valido", this.formExpenses.value);
-			this.setExpensesApi();
-
-			if (this.isFormEdit) this.navigation.navigateToUrl(`/${URL.expenses}`);
-
-		} else if (this.formExpenses.valid && this.isFormDelete) { // deleta as informacoes
-			if (confirm("Quer realmente deletar este gasto?")) this.deleteExpensesApi();
-			else return;
-
-			this.navigation.navigateToUrl(`/${URL.expenses}`);
-		} else {
-			Utils.markFormFieldsAsTouched(this.formExpenses);
-			console.log("## INVALIDO");
-		}
 	}
 
 }

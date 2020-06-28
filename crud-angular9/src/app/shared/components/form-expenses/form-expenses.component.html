@@ -1,5 +1,5 @@
 <!-- <form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()" *ngIf="categories.length > 0"> -->
-<form class="mb-3" [formGroup]="formExpenses" (ngSubmit)="submitFormExpenses()">
+<form class="mb-3" [formGroup]="formExpenses">
     <div class="row">
 
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
@@ -65,17 +65,21 @@
                 *ngIf="formExpenses.get('tag').touched && formExpenses.get('category').dirty">Ok</span>
         </div>
 
-        <div *ngIf="!isModal && !isFormDelete" class="col-12 mt-3">
-            <button [disabled]="formExpenses.invalid" class="btn btn-info" type="submit"><i class="fa fa-check"></i>
+        <div *ngIf="!isModal && !isFormDelete && !isFormEdit" class="col-12 mt-3">
+            <button [disabled]="formExpenses.invalid" class="btn btn-info" type="submit" (click)="submitFormExpense()"><i class="fa fa-check"></i>
                 Salvar</button>
         </div>
+        <div *ngIf="!isModal && isFormEdit" class="col-12 mt-3">
+            <button [disabled]="formExpenses.invalid" class="btn btn-info" type="submit" (click)="submitFormExpenseUpdate()"><i class="fa fa-check"></i>
+                Concluído</button>
+        </div>
         <div *ngIf="!isModal && isFormDelete" class="col-12 mt-3">
-            <button [disabled]="formExpenses.invalid" class="btn btn-danger" type="submit"><i class="fa fa-check"></i>
+            <button [disabled]="formExpenses.invalid" class="btn btn-danger" type="submit" (click)="submitFormExpenseDelete()"><i class="fa fa-check"></i>
                 Deletar</button>
         </div>
 
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">
-            <button [disabled]="formExpenses.invalid" class="btn btn-info btn-block" type="submit"><i
+            <button [disabled]="formExpenses.invalid" class="btn btn-info btn-block" type="submit" (click)="submitFormExpense()"><i
                     class="fa fa-check"></i>
                 Salvar</button>
         </div>

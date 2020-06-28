@@ -2,6 +2,7 @@ import { URL } from './../../core/urls';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ExpensesModel } from 'src/app/shared/models/expenses.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,11 +19,15 @@ export class ExpensesService {
         return this.http.get<any>(`${URL.localhost}/${URL.expenses}/${id}`);
     }
     
-    public setExpenses(formData): Observable<any> {
+    public setExpenses(formData: ExpensesModel): Observable<any> {
         return this.http.post<any>(`${URL.localhost}/${URL.expenses}`, formData);
     }
     
     public deleteExpense(idExpense: number): Observable<any> {
         return this.http.delete<any>(`${URL.localhost}/${URL.expenses}/${idExpense}`);
+    }
+    
+    public updateExpense(formData: ExpensesModel): Observable<any> {
+        return this.http.put<any>(`${URL.localhost}/${URL.expenses}/${formData.id}`, formData);
     }
 }
