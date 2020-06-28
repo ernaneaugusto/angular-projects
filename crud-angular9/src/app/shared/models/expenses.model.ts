@@ -28,6 +28,13 @@ export class ExpensesModel {
 
     private formatDateBR(date: string): string {
         const newDate = new Date(date);
-        return `${newDate.getFullYear()}/${newDate.getMonth() + 1}/${newDate.getDate() + 1}`;
+        let month = newDate.getMonth() + 1;
+        let correctMonth: string | number;
+        if (month < 10) {
+            correctMonth = `0${month}`;
+        } else {
+            correctMonth = month;
+        }
+        return `${newDate.getFullYear()}-${correctMonth}-${newDate.getDate() + 1}`;
     }
 }
