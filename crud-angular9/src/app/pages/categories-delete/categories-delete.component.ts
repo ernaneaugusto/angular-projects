@@ -64,19 +64,10 @@ export class CategoriesDeleteComponent implements OnInit, OnDestroy {
     }
   }
 
-  // valida e submete o form de delete para o 'banco de dados'
-  public submitFormCategoriesDelete() {
-    this.deleteCategoryByIdApi(this.formCategoriesDelete);
-  }
-
   // confirma antes de executar a funcao de deletar categoria
   public confirmDelete(): void {
-    const confirmDelete = confirm("Quer realmente deletar esta categoria?");
-    if (confirmDelete) {
-      this.submitFormCategoriesDelete();
-    } else {
-      return;
-    }
+    if (confirm("Quer realmente deletar esta categoria?")) this.deleteCategoryByIdApi(this.formCategoriesDelete);
+    else return;
   }
 
   // busca os dados atuais da categoria
