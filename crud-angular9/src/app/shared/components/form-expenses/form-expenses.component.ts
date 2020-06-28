@@ -32,7 +32,7 @@ export class FormExpensesComponent implements OnInit {
 
 	// propriedade que sera emitida quando um novo expense for cadastrado
 	@Output() newExpenseEmitter: EventEmitter<any> = new EventEmitter();
-	
+
 	public idExpense: number;
 	public formExpenses: FormGroup = new FormGroup({
 		amount: new FormControl(
@@ -91,13 +91,15 @@ export class FormExpensesComponent implements OnInit {
 	}
 
 	private setExpensesApi(): void {
-		const data = new ExpensesModel(this.formExpenses.value);
+		const formData = new ExpensesModel(this.formExpenses.value);
+
 		this.setExpensesObs$ = this.serviceExpenses
-			.setExpenses(data)
+			.setExpenses(formData)
 			.subscribe(() => {
 				// emite o novo expense cadastrado
-				this.setExpenseEmitter(data);
-				console.log("## Dados cadastrados com sucesso!", data);
+				this.setExpenseEmitter(formData);
+				this.formExpenses.reset();
+				console.log("## Dados cadastrados com sucesso!", formData);
 			}, (error: HttpErrorResponse) => {
 				console.log("## error", error);
 			});
@@ -126,16 +128,17 @@ export class FormExpensesComponent implements OnInit {
 			)
 			.subscribe((expense: ExpensesModel) => {
 				this.idExpense = parseInt(expense.id);
+				const expenseItem = new ExpensesModel(expense);
+
 				this.formExpenses.setValue({
-                    amount: expense.amount,
-                    description: expense.description,
-                    purchaseDate: expense.purchaseDate,
-                    category: expense.category,
-                    tag: expense.tag,
+					amount: expenseItem.amount,
+					description: expenseItem.description,
+					purchaseDate: expenseItem.purchaseDate,
+					category: expenseItem.category,
+					tag: expenseItem.tag,
 				});
 
 				this.expensesModel = new ExpensesModel(expense);
-				console.log("this.expensesModel", this.expensesModel);
 
 			}, (error: HttpErrorResponse) => console.log("## error", error));
 	}
@@ -144,7 +147,7 @@ export class FormExpensesComponent implements OnInit {
 		if (this.formExpenses.valid) {
 			console.log("## Valido", this.formExpenses.value);
 			this.setExpensesApi();
-			if(this.isFormEdit) this.navigation.navigateToUrl(`/${URL.expenses}`);
+			if (this.isFormEdit) this.navigation.navigateToUrl(`/${URL.expenses}`);
 		} else {
 			Utils.markFormFieldsAsTouched(this.formExpenses);
 			console.log("## INVALIDO");

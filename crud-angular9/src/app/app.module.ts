@@ -24,7 +24,7 @@ import { CategoriesService } from './services/categories/categories.service';
 import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
 import { ExpensesService } from './services/expenses/expenses.service';
-import { LoaderComponent } from './shared/components/loader.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 import { TableExpensesComponent } from './components/table-expenses/table-expenses.component';
 import { TableCategoriesComponent } from './components/table-categories/table-categories.component';
 import { ExpensesEditComponent } from './pages/expenses-edit/expenses-edit.component';

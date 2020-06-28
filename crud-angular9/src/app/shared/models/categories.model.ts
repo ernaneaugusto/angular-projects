@@ -12,7 +12,7 @@ export class CategoriesModel {
 
     constructor(data: CategoriesInterface) {
         this.id = data.id;
-        this.category = Utils.FirstCharacterToUppercase(data.category);
-        this.description = data.description ? Utils.FirstCharacterToUppercase(data.description) : '** Sem decrição **';
+        this.category = Utils.firstCharacterToUppercase(data.category);
+        this.description = data.description ? Utils.firstCharacterToUppercase(data.description) : '** Sem decrição **';
     }
 }

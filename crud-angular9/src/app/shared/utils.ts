@@ -58,12 +58,12 @@ function functionSortArrayObjects(arrayObjects: Array<any>, orderBy: string = 'c
  * @param data Tipo string: transforma o primeiro caractere de uma string em maiusculo
  */
 function functionFirstCharacterToUppercase(data: string) {
-    return data.charAt(0).toUpperCase() + data.slice(1);
+    return data ? data.charAt(0).toUpperCase() + data.slice(1) : '';
 }
 
 export class Utils {
     static markFormFieldsAsTouched = functionMarkFormFieldsAsTouched;
     static createModel = functionCreateModel;
     static sortArrayObjects = functionSortArrayObjects;
-    static FirstCharacterToUppercase = functionFirstCharacterToUppercase;
+    static firstCharacterToUppercase = functionFirstCharacterToUppercase;
 }
