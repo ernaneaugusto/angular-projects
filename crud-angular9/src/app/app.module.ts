@@ -17,9 +17,7 @@ import { SidebarComponent } from './components/layout/sidebar/sidebar.component'
 import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { BreadcrumbComponent } from './components/layout/breadcrumb/breadcrumb.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
-import { MainHomeComponent } from './components/layout/main-home/main-home.component';
 import { FormExpensesComponent } from './shared/components/form-expenses/form-expenses.component';
-
 import { CategoriesService } from './services/categories/categories.service';
 import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
@@ -40,7 +38,6 @@ import { AlertMessageComponent } from './shared/components/alert-message/alert-m
     NavbarComponent,
     BreadcrumbComponent,
     FooterComponent,
-    MainHomeComponent,
     FormExpensesComponent,
     CategoriesEditComponent,
     CategoriesDeleteComponent,
