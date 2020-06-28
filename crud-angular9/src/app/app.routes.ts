@@ -1,3 +1,4 @@
+import { ExpensesDeleteComponent } from './pages/expenses-delete/expenses-delete.component';
 import { CategoriesDeleteComponent } from './pages/categories-delete/categories-delete.component';
 import { CategoriesEditComponent } from './pages/categories-edit/categories-edit.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
@@ -10,6 +11,7 @@ export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'expenses', component: ExpensesComponent },
     { path: 'expenses/edit/:id', component: ExpensesEditComponent },
+    { path: 'expenses/delete/:id', component: ExpensesDeleteComponent },
     { path: 'categories', component: CategoriesComponent },
     { path: 'categories/edit/:id', component: CategoriesEditComponent },
     { path: 'categories/delete/:id', component: CategoriesDeleteComponent },

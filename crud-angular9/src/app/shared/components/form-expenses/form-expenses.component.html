@@ -5,7 +5,7 @@
         <div class="col-12 mt-3 text-left" [ngClass]="{'col-lg-4': !isModal}">
             <label for="amount">Valor da compra</label>
             <input type="number" id="amount" name="amount" formControlName="amount" class="form-control mb-1"
-                placeholder="0,00">
+                placeholder="0,00" [readOnly]="isFormDelete" [ngClass]="{'readonly-field': isFormDelete}">
             <span class="text-danger"
                 *ngIf="formExpenses.get('amount').getError('required') && formExpenses.get('amount').touched">Campo
                 obrigatório</span>
@@ -17,7 +17,7 @@
             <label for="description">Descrição do gasto</label>
             <input type="text" id="description" name="description" formControlName="description"
                 class="form-control mb-1" placeholder="Internet, Calça, Perfume..." name="description"
-                formControlName="description">
+                formControlName="description" [readOnly]="isFormDelete" [ngClass]="{'readonly-field': isFormDelete}">
             <span class="text-danger d-block"
                 *ngIf="formExpenses.get('description').getError('required') && formExpenses.get('description').touched">Campo
                 obrigatório</span>
@@ -33,7 +33,7 @@
             <label for="purchaseDate">Data da compra</label>
             <!-- @TODO: corrigir formato da data ao editar -->
             <input type="date" id="purchaseDate" name="purchaseDate" formControlName="purchaseDate"
-                class="form-control mb-1" placeholder="Data da compra">
+                class="form-control mb-1" placeholder="Data da compra" [readOnly]="isFormDelete" [ngClass]="{'readonly-field': isFormDelete}">
             <span class="text-danger d-block"
                 *ngIf="formExpenses.get('purchaseDate').getError('required') && formExpenses.get('purchaseDate').touched">Campo
                 obrigatório</span>
@@ -43,7 +43,7 @@
 
         <div class="col-12 col-lg-6 text-left mt-3">
             <label for="category">Categoria</label>
-            <select class="browser-default custom-select mb-1" id="category" name="category" formControlName="category">
+            <select class="browser-default custom-select mb-1" id="category" name="category" formControlName="category" [ngClass]="{'readonly-field': isFormDelete}">
                 <option value="" selected *ngIf="!categories">-- Carregando...</option>
                 <option value="" [selected]="!isFormEdit" *ngIf="categories || isFormEdit">-- Selecione a categoria
                 </option>
@@ -60,14 +60,18 @@
         <div class="col-12 col-lg-6 text-left mt-3">
             <label for="tag">Tag</label>
             <input type="text" id="tag" name="tag" formControlName="tag" class="form-control mb-1"
-                placeholder="Mercado, Ifood, Higiene...">
+                placeholder="Mercado, Ifood, Higiene..." [readOnly]="isFormDelete" [ngClass]="{'readonly-field': isFormDelete}">
             <span class="text-success d-block"
                 *ngIf="formExpenses.get('tag').touched && formExpenses.get('category').dirty">Ok</span>
         </div>
 
-        <div *ngIf="!isModal" class="col-12 mt-3">
+        <div *ngIf="!isModal && !isFormDelete" class="col-12 mt-3">
             <button [disabled]="formExpenses.invalid" class="btn btn-info" type="submit"><i class="fa fa-check"></i>
                 Salvar</button>
+        </div>
+        <div *ngIf="!isModal && isFormDelete" class="col-12 mt-3">
+            <button [disabled]="formExpenses.invalid" class="btn btn-danger" type="submit"><i class="fa fa-check"></i>
+                Deletar</button>
         </div>
 
         <div class="col-12 col-md-6 mt-2" *ngIf="isModal">

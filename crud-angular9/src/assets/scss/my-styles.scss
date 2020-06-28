@@ -28,6 +28,13 @@ table.table td {
 	margin-right: 5px;
 }
 
+.readonly-field {
+	pointer-events: none;
+	touch-action: none;
+	background-color: #E9ECEF;
+}
+
+
 /* Theme styles */
 
 .sidebar-fixed {

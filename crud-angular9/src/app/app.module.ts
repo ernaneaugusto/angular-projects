@@ -27,6 +27,7 @@ import { TableExpensesComponent } from './components/table-expenses/table-expens
 import { TableCategoriesComponent } from './components/table-categories/table-categories.component';
 import { ExpensesEditComponent } from './pages/expenses-edit/expenses-edit.component';
 import { AlertMessageComponent } from './shared/components/alert-message/alert-message.component';
+import { ExpensesDeleteComponent } from './pages/expenses-delete/expenses-delete.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { AlertMessageComponent } from './shared/components/alert-message/alert-m
     TableExpensesComponent,
     TableCategoriesComponent,
     ExpensesEditComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    ExpensesDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<main class="pt-5 mx-lg-3">
+    <div class="container-fluid mt-5">
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="row wow fadeIn">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <a class="btn-link text-primary mt-3 d-inline-block" routerLink="/expenses" title="Voltar para Gastos">
+                            <i class="fas fa-arrow-left"></i>
+                            Voltar
+                        </a>
+                        <app-form-expenses [isFormDelete]="true"></app-form-expenses>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

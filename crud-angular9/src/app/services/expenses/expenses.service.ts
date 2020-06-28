@@ -21,4 +21,8 @@ export class ExpensesService {
     public setExpenses(formData): Observable<any> {
         return this.http.post<any>(`${URL.localhost}/${URL.expenses}`, formData);
     }
+    
+    public deleteExpense(idExpense: number): Observable<any> {
+        return this.http.delete<any>(`${URL.localhost}/${URL.expenses}/${idExpense}`);
+    }
 }

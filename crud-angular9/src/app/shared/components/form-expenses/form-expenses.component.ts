@@ -20,7 +20,8 @@ import { CategoriesModel } from '../../models/categories.model';
 export class FormExpensesComponent implements OnInit {
 
 	@Input() isModal: boolean = false;
-	@Input() isFormEdit: boolean;
+	@Input() isFormEdit: boolean = false;
+	@Input() isFormDelete: boolean = false;
 
 	private categoriesModel: Array<CategoriesModel>;
 	private expensesModel: ExpensesModel;
@@ -28,12 +29,13 @@ export class FormExpensesComponent implements OnInit {
 	private getCategoriesObs$: Subscription;
 	private getExpensesObs$: Subscription;
 	private setExpensesObs$: Subscription;
+	private deleteExpenseObs$: Subscription;
 	private activatedRouteObs$: Subscription;
 
 	// propriedade que sera emitida quando um novo expense for cadastrado
 	@Output() newExpenseEmitter: EventEmitter<any> = new EventEmitter();
 
-	public idExpense: number;
+	public idExpense: number; // passado 
 	public formExpenses: FormGroup = new FormGroup({
 		amount: new FormControl(
 			'',
@@ -64,11 +66,11 @@ export class FormExpensesComponent implements OnInit {
 	) { }
 
 	ngOnInit(): void {
-		if (this.isFormEdit) {
+		if (this.isFormEdit || this.isFormDelete) {
 			// pega o id da rota da aplicacao para usar na consulta dos dados para edicao
 			this.activatedRouteObs$ = this.activatedRoute.params.subscribe(paramId => {
-				const idExpense = parseInt(paramId.id)
-				this.getExpensesByIdApi(idExpense);
+				this.idExpense = paramId.id;
+				this.getExpensesByIdApi(this.idExpense);
 			});
 		}
 		this.getCategoriesApi();
@@ -79,6 +81,7 @@ export class FormExpensesComponent implements OnInit {
 		if (this.activatedRouteObs$) this.activatedRouteObs$.unsubscribe();
 		if (this.setExpensesObs$ !== undefined) this.setExpensesObs$.unsubscribe();
 		if (this.getExpensesObs$ !== undefined) this.getExpensesObs$.unsubscribe();
+		if (this.deleteExpenseObs$ !== undefined) this.deleteExpenseObs$.unsubscribe();
 	}
 
 	get categories(): Array<CategoriesModel> {
@@ -103,6 +106,20 @@ export class FormExpensesComponent implements OnInit {
 			}, (error: HttpErrorResponse) => {
 				console.log("## error", error);
 			});
+	}
+
+	private deleteExpensesApi() {
+		this.deleteExpenseObs$ = this.serviceExpenses
+			.deleteExpense(this.idExpense)
+			.subscribe(
+				() => {
+
+				},
+				(error: HttpErrorResponse) => {
+					console.log("## error", error);
+
+				}
+			);
 	}
 
 	private getCategoriesApi(): void {
@@ -144,10 +161,17 @@ export class FormExpensesComponent implements OnInit {
 	}
 
 	public submitFormExpenses() {
-		if (this.formExpenses.valid) {
+		if (this.formExpenses.valid && !this.isFormDelete) { // cadastra e edita as informacoes
 			console.log("## Valido", this.formExpenses.value);
 			this.setExpensesApi();
+
 			if (this.isFormEdit) this.navigation.navigateToUrl(`/${URL.expenses}`);
+
+		} else if (this.formExpenses.valid && this.isFormDelete) { // deleta as informacoes
+			if (confirm("Quer realmente deletar este gasto?")) this.deleteExpensesApi();
+			else return;
+
+			this.navigation.navigateToUrl(`/${URL.expenses}`);
 		} else {
 			Utils.markFormFieldsAsTouched(this.formExpenses);
 			console.log("## INVALIDO");
