@@ -1,7 +1,23 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <strong class="section-title m-0">Projeto CRUD com Angular</strong>
+    <div class="container-fluid justify-content-end">
+        <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
+            <strong class="section-title d-inline-block">Projeto CRUD com Angular</strong>
+
+            <ul class="navbar-nav ml-auto d-xl-none mt-1">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link waves-effect" href="#" [routerLink]="['/']"><i class="fa fa-home mr-1"></i> Home
+                        <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link waves-effect" [routerLink]="['/expenses']"
+                        href="https://mdbootstrap.com/docs/jquery/"><i class="fa fa-money-bill-wave mr-1"></i>
+                        Gastos</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link waves-effect" [routerLink]="['/categories']"><i
+                            class="fa fa-list-ul mr-1"></i>Categorias</a>
+                </li>
+            </ul>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
