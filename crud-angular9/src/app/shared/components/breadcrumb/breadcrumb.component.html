@@ -1,12 +1,10 @@
 <div class="card mb-4 wow fadeIn">
     <div class="card-body d-sm-flex justify-content-between">
-        <h4 class="mb-2 mb-sm-0 pt-1 section-title">Home</h4>
-        <h4 class="mb-2 mb-sm-0 pt-1 section-title">
-            <ng-template *ngIf="breadcrumbInfos">
-                <a href="https://mdbootstrap.com/docs/jquery/" target="_blank">{{ breadcrumbInfos.pageName }}</a>
-                <span> / </span>
-                <span>{{ breadcrumbInfos.pageName }}</span>
-            </ng-template>
-        </h4>
+        <h4 class="mb-2 mb-sm-0 pt-1 section-title" *ngIf="breadcrumbInfos.pageName !== ''; else pageHome">Home<span class="font-weight-light"> / {{breadcrumbInfos.pageName}}</span></h4>
+
+        <!-- a condicao do ELSE deve ser colocado em uma tag <ng-template> -->
+        <ng-template #pageHome>
+            <h4 class="mb-2 mb-sm-0 pt-1 section-title">Home</h4>
+        </ng-template>
     </div>
 </div>
