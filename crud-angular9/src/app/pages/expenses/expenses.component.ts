@@ -4,11 +4,12 @@ import { Subscription } from 'rxjs';
 import { ExpensesService } from 'src/app/services/expenses/expenses.service';
 import { Utils } from 'src/app/shared/utils';
 import { take } from 'rxjs/operators';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumb/breadcrumb.service';
 
 @Component({
-  selector: 'app-expenses',
-  templateUrl: './expenses.component.html',
-  styleUrls: ['./expenses.component.scss']
+	selector: 'app-expenses',
+	templateUrl: './expenses.component.html',
+	styleUrls: ['./expenses.component.scss']
 })
 export class ExpensesComponent implements OnInit, OnDestroy {
 
@@ -19,9 +20,13 @@ export class ExpensesComponent implements OnInit, OnDestroy {
 	private expensesTableUpdated: EventEmitter<any> = new EventEmitter<any>();
 
 
-	constructor(private service: ExpensesService) { }
+	constructor(
+		private service: ExpensesService,
+		private breadcrumbService: BreadcrumbService
+	) { }
 
 	ngOnInit(): void {
+		this.breadcrumbService.updateBreadcrumbName('Gastos');
 		this.getExpensesApi();
 	}
 

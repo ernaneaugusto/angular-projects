@@ -7,6 +7,7 @@ import { CategoriesModel } from 'src/app/shared/models/categories.model';
 import { take } from 'rxjs/operators';
 import { URL } from './../../core/urls';
 import { HttpErrorResponse } from '@angular/common/http';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumb/breadcrumb.service';
 
 @Component({
   selector: 'app-categories-delete',
@@ -39,11 +40,13 @@ export class CategoriesDeleteComponent implements OnInit, OnDestroy {
   // injeta os servicos CategoriesService e ActivatedRoute ao componente para que seja possivel utiliza-los no componente
   constructor(
     private service: CategoriesService,
+    private breadcrumbService: BreadcrumbService,
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.breadcrumbService.updateBreadcrumbName('Categorias');
     // pega o id da rota da aplicacao para usar na consulta dos dados para edicao
     this.activatedRouteObs$ = this.activatedRoute.params.subscribe(paramId => {
       const categoryId = parseInt(paramId.id);

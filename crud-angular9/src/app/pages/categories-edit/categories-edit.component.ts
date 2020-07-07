@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { URL } from './../../core/urls';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumb/breadcrumb.service';
 
 @Component({
   selector: 'app-categories-edit',
@@ -39,11 +40,13 @@ export class CategoriesEditComponent implements OnInit, OnDestroy {
   // injeta os servicos CategoriesService e ActivatedRoute ao componente para que seja possivel utiliza-los no componente
   constructor(
       private service: CategoriesService,
+      private breadcrumbService: BreadcrumbService,
       private activatedRoute: ActivatedRoute,
       private router: Router
   ) { }
 
   ngOnInit(): void {
+      this.breadcrumbService.updateBreadcrumbName('Categorias');
       // pega o id da rota da aplicacao para usar na consulta dos dados para edicao
       this.activatedRouteObs$ = this.activatedRoute.params.subscribe(id => {
           this.categoryId = this.activatedRoute.snapshot.params['id'];

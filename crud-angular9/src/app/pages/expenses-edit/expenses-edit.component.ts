@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumb/breadcrumb.service';
 
 @Component({
   selector: 'app-expenses-edit',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpensesEditComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private breadcrumbService: BreadcrumbService
+  ) { }
 
   ngOnInit(): void {
+    this.breadcrumbService.updateBreadcrumbName('Gastos');
   }
 
 }

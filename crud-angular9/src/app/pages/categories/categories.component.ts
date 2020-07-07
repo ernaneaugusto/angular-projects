@@ -6,6 +6,7 @@ import { CategoriesService } from 'src/app/services/categories/categories.servic
 import { Utils } from 'src/app/shared/utils';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
+import { BreadcrumbService } from 'src/app/shared/components/breadcrumb/breadcrumb.service';
 
 @Component({
   selector: 'app-categories',
@@ -32,9 +33,13 @@ export class CategoriesComponent implements OnInit {
   });
 
   // injeta o servico CategoriesService ao componente para que seja possivel utilizar seus metodos para fazer requisicoes para API
-  constructor(private service: CategoriesService) { }
+  constructor(
+    private service: CategoriesService,
+    private breadcrumbService: BreadcrumbService
+    ) { }
 
   ngOnInit(): void {
+    this.breadcrumbService.updateBreadcrumbName('Categorias');
     // busca os dados de categorias da API
     this.getCategoriesApi();
   }
