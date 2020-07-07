@@ -1,0 +1,11 @@
+<div class="card mb-4 my-card">
+    <div class="card-body text-center">
+        <h2 class="section-title text-left mb-3">{{ title }}</h2>
+        <h4 class="badge-{{color}} circle-number">{{ value }}</h4>
+        <a class="d-block text-primary"
+        *ngIf="url"
+            routerLink="/{{url}}"
+            title="Ir para {{title}}">Ver mais <i class="fa fa-arrow-right"></i>
+        </a>
+    </div>
+</div>

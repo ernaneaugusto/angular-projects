@@ -24,11 +24,6 @@
       "category": "Ifood",
       "description": "Gastos com compras pelo Ifood",
       "id": 5
-    },
-    {
-      "category": "Teste",
-      "description": "Teste descrição",
-      "id": 6
     }
   ],
   "expenses": [
@@ -49,12 +44,12 @@
       "id": 2
     },
     {
-      "tag": "Tag1",
-      "id": 3,
-      "description": "Teste descrição333",
-      "purchaseDate": "2020-06-30",
-      "category": "Alimentos",
-      "amount": 65.78
+      "tag": "Tag",
+      "description": "Teste descrição",
+      "purchaseDate": "2020-07-5",
+      "category": "Ifood",
+      "amount": 1,
+      "id": 4
     }
   ]
 }

@@ -2,29 +2,22 @@
     <div class="container-fluid mt-5 min-height">
         <app-breadcrumb></app-breadcrumb>
         <div class="row wow fadeIn">
-            <div class="col-md-8 mb-4">
 
-                <div class="card mb-4">
-
-                    <div class="card-body">
-                        <h4 class="section-title">Categoria por categoria</h4>
-                        <div class="list-group list-group-flush">
-                            <a class="list-group-item list-group-item-action waves-effect">Categoria 1
-                                <span class="badge badge-success badge-pill pull-right">22%
-                                    <i class="fa fa-arrow-up ml-1"></i>
-                                </span>
-                            </a>
-                            <a class="list-group-item list-group-item-action waves-effect">Categoria 2
-                                <span class="badge badge-danger badge-pill pull-right">5%
-                                    <i class="fa fa-arrow-down ml-1"></i>
-                                </span>
-                            </a>
-                            <a class="list-group-item list-group-item-action waves-effect">Categoria 3
-                                <span class="badge badge-primary badge-pill pull-right">123</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-md-4 mb-4">
+                <app-card-amount-items
+                    title="Total de Categorias"
+                    [value]="categoriesAmount"
+                    url="categories"
+                    color="info">
+                </app-card-amount-items>
+            </div>
+            <div class="col-md-4 mb-4">
+                <app-card-amount-items
+                    title="Total de Gastos"
+                    [value]="expensesAmount"
+                    url="expenses"
+                    color="success">
+                </app-card-amount-items>
             </div>
 
             <div class="col">
@@ -37,8 +30,7 @@
                     </div>
                     <div class="modal fade right" id="sideModalTRSuccessDemo" tabindex="-1" role="dialog"
                         aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-                        <div class="modal-dialog modal-side modal-top-right modal-notify modal-info"
-                            role="document">
+                        <div class="modal-dialog modal-side modal-top-right modal-notify modal-info" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <p class="heading">Novo gasto</p>
