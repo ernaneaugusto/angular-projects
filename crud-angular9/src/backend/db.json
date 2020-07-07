@@ -24,24 +24,37 @@
       "category": "Ifood",
       "description": "Gastos com compras pelo Ifood",
       "id": 5
+    },
+    {
+      "category": "Teste",
+      "description": "Teste descrição",
+      "id": 6
     }
   ],
   "expenses": [
     {
-      "description": "Internet",
-      "purchaseDate": "2020-01-09T00:00:00.000Z",
+      "tag": "Presente para mim",
+      "description": "Mi Band 5",
+      "purchaseDate": "2020-06-13",
       "category": "Tecnologia",
-      "amount": 99.9,
-      "tag": "Internet",
+      "amount": 174.99,
       "id": 1
     },
     {
-      "description": "Celular",
-      "purchaseDate": "2020-04-03T00:00:00.000Z",
-      "category": "Tecnologia",
-      "amount": 999.9,
-      "tag": "Celular",
+      "tag": "Mercado",
+      "description": "Mercado",
+      "purchaseDate": "2020-07-3",
+      "category": "Mercado",
+      "amount": 54.88,
       "id": 2
+    },
+    {
+      "tag": "Tag1",
+      "id": 3,
+      "description": "Teste descrição333",
+      "purchaseDate": "2020-06-30",
+      "category": "Alimentos",
+      "amount": 65.78
     }
   ]
 }

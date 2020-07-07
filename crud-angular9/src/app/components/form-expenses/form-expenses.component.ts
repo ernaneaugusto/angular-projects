@@ -1,16 +1,16 @@
-import { URL } from './../../../core/urls';
-import { NavigationService } from './../../services/navigation/navigation.service';
+import { URL } from './../../core/urls';
 import { ActivatedRoute } from '@angular/router';
-import { ExpensesModel } from './../../models/expenses.model';
 import { HttpErrorResponse } from '@angular/common/http';
 import { take } from 'rxjs/operators';
-import { CategoriesService } from './../../../services/categories/categories.service';
-import { Utils } from './../../utils';
+import { Utils } from './../../shared/utils';
 import { Validators, FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ExpensesService } from 'src/app/services/expenses/expenses.service';
 import { Subscription } from 'rxjs';
-import { CategoriesModel } from '../../models/categories.model';
+import { CategoriesModel } from 'src/app/shared/models/categories.model';
+import { ExpensesModel } from 'src/app/shared/models/expenses.model';
+import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { NavigationService } from 'src/app/shared/services/navigation/navigation.service';
 
 @Component({
 	selector: 'app-form-expenses',
