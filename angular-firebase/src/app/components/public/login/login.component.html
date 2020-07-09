@@ -14,7 +14,7 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Email</label>
                                         <input class="form-control" name="emailControle" #emailControle="ngModel"
-                                            type="text" placeholder="Informe o Email" [(ngModel)]="email" maxlength="60"
+                                            type="email" placeholder="Informe o Email" [(ngModel)]="email" maxlength="60"
                                             email required>
                                         <div *ngIf="emailControle.invalid" class="text-danger">
                                             <div *ngIf="emailControle.errors?.required">Email é obrigatório</div>
