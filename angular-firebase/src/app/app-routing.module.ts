@@ -4,8 +4,20 @@ import { LoginComponent } from './components/public/login/login.component';
 
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent }
+  { 
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full' 
+  },
+  { 
+    path: 'login',
+    component: LoginComponent 
+  },
+  { 
+    path: 'admin/painel',
+    loadChildren: () => import('./components/admin/painel/painel.module').then(p => p.PainelModule),
+    // canActivate: [ AuthGuardService ]
+  },
 ];
 
 @NgModule({
