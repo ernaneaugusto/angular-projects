@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ButtonModule } from 'primeng/components/button/button';
-import { FieldsetModule } from 'primeng/components/fieldset/fieldset';
-import { InputMaskModule } from 'primeng/components/inputmask/inputmask';
-
-import { MessagesModule } from 'primeng/components/messages/messages';
-import { CheckboxModule } from 'primeng/components/checkbox/checkbox';
-import { DialogModule } from 'primeng/components/dialog/dialog';
-import { InputTextModule } from 'primeng/components/inputtext/inputtext';
-import { InputTextareaModule } from 'primeng/components/inputtextarea/inputtextarea';
-import { DropdownModule } from 'primeng/components/dropdown/dropdown';
-import { ConfirmDialogModule } from 'primeng/components/confirmdialog/confirmdialog';
-import { CalendarModule } from 'primeng/components/calendar/calendar';
-import { TabViewModule } from 'primeng/components/tabview/tabview';
-import { ToggleButtonModule } from 'primeng/components/togglebutton/togglebutton';
-import { TableModule } from 'primeng/components/table/table';
+import { ButtonModule } from 'primeng/button';
+import { FieldsetModule } from 'primeng/fieldset';
+import { InputMaskModule } from 'primeng/inputmask';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { CalendarModule } from 'primeng/calendar';
+import { TabViewModule } from 'primeng/tabview';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
     declarations: [],
@@ -25,6 +25,7 @@ import { TableModule } from 'primeng/components/table/table';
         FieldsetModule,
         InputMaskModule,
         MessagesModule,
+        MessageModule,
         CheckboxModule,
         TableModule,
         DialogModule,
@@ -41,6 +42,7 @@ import { TableModule } from 'primeng/components/table/table';
         FieldsetModule,
         InputMaskModule,
         MessagesModule,
+        MessageModule,
         CheckboxModule,
         TableModule,
         DialogModule,
